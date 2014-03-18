@@ -1,0 +1,136 @@
+/**
+ * Simple Listing Post Type
+ *
+ * @package    Simple_Listing_Post_Type
+ * @author     Robin Cornett <hello@robincornett.com>
+ * @copyright  2014 Robin Cornett
+ *
+ */
+
+/* Featured Listings
+-------------------------------------------- */
+
+.listing .entry-meta {
+	display: none;
+}
+
+.simple-listing .content .entry {
+	float: left;
+	padding: 10px;
+	width: 50%;
+}
+
+.listing-wrap img {
+	margin-bottom: -6px;
+}
+
+.simple-listing .content .entry .listing-wrap,
+.featuredlisting .listing-wrap {
+	background-color: #555;
+	max-width: 340px;
+	position: relative;
+}
+
+.featuredlisting > a,
+.featuredlisting .widget img.attachment-properties {
+	position: absolute;
+}
+
+.featuredlisting {
+	display: block;
+	left: 0;
+	overflow: hidden;
+	top: 0;
+	width: 340px;
+	z-index: 1;
+}
+
+.featuredlisting .entry {
+	border: none;
+	padding: 0;
+}
+
+.featuredlisting img {
+	left: 0;
+	opacity: .4;
+	top: 0;
+	width: 340px;
+	z-index: 10;
+	margin-bottom: -6px !important;
+}
+
+.featuredlisting a {
+	margin-bottom: 0;
+}
+
+.featuredlisting img:hover {
+	-webkit-transition: opacity .2s ease-in-out;
+	-moz-transition:    opacity .2s ease-in-out;
+	-ms-transition:     opacity .2s ease-in-out;
+	-o-transition:      opacity .2s ease-in-out;
+	transition:         opacity .2s ease-in-out;
+	opacity: 1;
+}
+
+.simple-listing .content .entry-header,
+.featuredlisting .entry-header {
+	color: #fff;
+	text-align: center;
+	z-index: 1;
+}
+
+.simple-listing .content .entry-title,
+.featuredlisting .entry-title {
+	color: #fff;
+	font-family: 'Open Sans', serif;
+	font-size: 18px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-transform: none;
+	top: 40px;
+}
+
+.listing-status {
+	background-color: rgba(250,10,10,.6);
+	bottom: 0;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-transform: uppercase;
+	z-index: 100;
+}
+
+.featuredlisting .entry-header:hover {
+}
+
+.featuredlisting .widget-wrap .more-link {
+	top: 120px;
+}
+
+.featuredlisting .widget-text {
+	display: none;
+}
+
+.featuredlisting .widget-wrap a.more-link:before,
+.featuredlisting .widget-wrap a.more-link:after {
+	border-top: none;
+	content: none;
+	display: inline-block;
+	padding-bottom: 0;
+	width: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.simple-listing .content .entry {
+		width: 100%;
+	}
+
+	.simple-listing .content .entry .listing-wrap {
+		margin: 0 auto;
+	}
+}

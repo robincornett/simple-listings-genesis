@@ -24,7 +24,7 @@ function simplelisting_loop() {
 
 			echo '<article class="entry"><div class="listing-wrap">';
 			if ( $mls ) {
-				echo '<a href="' . $mls . '">' . get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) ) . '</a>';
+				echo '<a href="' . esc_url( $mls ) . '">' . get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) ) . '</a>';
 			}
 			else {
 				echo '<a href="' . get_permalink() . '">' . get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) ) . '</a>';

@@ -10,6 +10,10 @@
 /* Featured Listings
 -------------------------------------------- */
 
+.simple-listing .content {
+	background: #fff;
+}
+
 .listing .entry-meta {
 	display: none;
 }
@@ -41,7 +45,6 @@
 	left: 0;
 	overflow: hidden;
 	top: 0;
-	width: 340px;
 	z-index: 1;
 }
 

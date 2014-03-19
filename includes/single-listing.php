@@ -17,22 +17,22 @@ function simplelisting_single_content() {
 	$location    = get_post_meta( $post->ID, '_cmb_listing-location', true );
 	$price       = get_post_meta( $post->ID, '_cmb_listing-price', true );
 	$description = get_the_content();
-	$mls = get_post_meta( $post->ID, '_cmb_mls-link', true );
+	$mls         = get_post_meta( $post->ID, '_cmb_mls-link', true );
 
 	echo get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'alignright', 'alt' => get_the_title(), 'title' => get_the_title() ) );
 	if ( $description ) {
-		echo wpautop( '<strong>Description:</strong> ' . $description );
+		echo wpautop( __( '<strong>Description:</strong> ', 'simple-listings-genesis' ) . $description );
 	}
 	if ( $location ) {
-		echo '<strong>Location:</strong> ' . $location;
+		echo __( '<strong>Location:</strong> ', 'simple-listings-genesis' ) . $location;
 	}
 	if ( $location && $price ) { echo '<br />'; }
 	if ( $price ) {
-		echo '<strong>Transaction Amount:</strong> ' . $price;
+		echo __( '<strong>Transaction Amount:</strong> ', 'simple-listings-genesis' ) . $price;
 	}
 	if ( $price && $mls ) { echo '<br />'; }
 	if ( $mls ) {
-		echo '<a href="' . $mls . '" target="_blank">Listing Details</a>';
+		echo '<a href="' . esc_url( $mls ) . '" target="_blank">' . __( 'Listing Details', 'simple-listings-genesis' ) . '</a>';
 	}
 }
 

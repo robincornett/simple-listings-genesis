@@ -20,9 +20,9 @@ function simplelisting_loop() {
 		while ( have_posts() ) : the_post();
 
 		$status = get_the_term_list( $post->ID, 'status', '', ', ', '' );
-		$mls = get_post_meta( $post->ID, '_cmb_mls-link', true );
+		$mls = get_post_meta( $post->ID, '_cmb_mls-link', true ); ?>
 
-			echo '<article class="entry"><div class="listing-wrap">';
+			<article <?php post_class(); ?>><div class="listing-wrap"> <?php
 			if ( $mls ) {
 				echo '<a href="' . esc_url( $mls ) . '">' . get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) ) . '</a>';
 			}

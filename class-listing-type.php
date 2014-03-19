@@ -182,3 +182,13 @@ function simplelisting_body_class( $classes ) {
 
 	return $classes;
 }
+
+add_filter( 'post_class', 'simplelisting_post_class' );
+function simplelisting_post_class( $classes ) {
+	global $post;
+	$terms = wp_get_object_terms( $post->ID, 'status' );
+	foreach ( $terms as $term ) {
+		$classes[] = $term->slug;
+	}
+	return $classes;
+}

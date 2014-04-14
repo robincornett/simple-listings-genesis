@@ -81,8 +81,8 @@ class Simple_Listing_Post_Type_Registrations {
 
 	protected function register_taxonomy_status() {
 		$labels = array(
-			'name'                       => __( 'Listing Status', 'simple-listings-genesis' ),
-			'singular_name'              => __( 'Listing Status', 'simple-listings-genesis' ),
+			'name'              => __( 'Listing Status', 'simple-listings-genesis' ),
+			'singular_name'     => __( 'Listing Status', 'simple-listings-genesis' ),
 		);
 
 		$args = array(

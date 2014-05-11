@@ -14,6 +14,10 @@
 	background: #fff;
 }
 
+.listings {
+	padding: 20px;
+}
+
 .listing .entry-meta {
 	display: none;
 }

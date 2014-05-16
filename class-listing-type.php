@@ -46,12 +46,14 @@ class Simple_Listing_Post_Type_Registrations {
 			'not_found'           => __( 'No Listings found', 'simple-listings-genesis' ),
 			'not_found_in_trash'  => __( 'No Listings found in Trash', 'simple-listings-genesis' ),
 		);
+
 		$rewrite = array(
 			'slug'                => 'listings',
 			'with_front'          => true,
 			'pages'               => true,
 			'feeds'               => true,
 		);
+
 		$args = array(
 			'label'               => __( 'Listing', 'simple-listings-genesis' ),
 			'description'         => __( 'Listing information', 'simple-listings-genesis' ),

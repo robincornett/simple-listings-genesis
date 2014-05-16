@@ -11,7 +11,7 @@ If your site is running a Genesis Framework child theme, this plugin includes a 
 Demo: http://milne.robincornettcreative.com/listings/
 
 ## Requirements
-* WordPress 3.4, tested up to 3.8
+* WordPress 3.4, tested up to 3.9.1
 * Genesis Framework (templates and widget will not work with other themes)
 * an HTML5 theme because I was too lazy to add XHTML support back in.
 

@@ -34,7 +34,7 @@ class Simple_Listing_Post_Type {
 	 *
 	 * @var      string
 	 */
-	const PLUGIN_SLUG = 'brom-listing';
+	const PLUGIN_SLUG = 'simple-listings-genesis';
 
 	protected $registration_handler;
 

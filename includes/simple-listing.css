@@ -12,6 +12,7 @@
 
 .simple-listing .content {
 	background: #fff;
+	margin-bottom: 40px;
 }
 
 .listings {
@@ -135,6 +136,12 @@
 	display: inline-block;
 	padding-bottom: 0;
 	width: 0;
+}
+
+@media only screen and (max-width: 1023px) {
+	.simple-listing .content .entry{
+		width: 33%;
+	}
 }
 
 @media only screen and (max-width: 767px) {

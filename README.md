@@ -8,7 +8,7 @@ This plugin registers a simple custom post type for real estate listings.  It al
 
 If your site is running a Genesis Framework child theme, this plugin includes a template for the archive, taxonomy, and single listing page. If you're not running the Genesis Framework, you can create your own templates for these in your theme. If you don't like my templates, comment out line 160 in the class-listing-type.php file. If you don't like my styles, override them in your child theme or comment out line 49 in simple-listings-genesis.php.
 
-Demo: http://milne.robincornettcreative.com/listings/
+Demo: http://robin.works/listings/
 
 ## Requirements
 * WordPress 3.4, tested up to 3.9.1

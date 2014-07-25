@@ -112,13 +112,9 @@ class Genesis_Featured_Listing extends WP_Widget {
 				'attr'    => genesis_parse_attr( 'entry-image-widget' ),
 			) );
 
-			$mls = get_post_meta( $post->ID, '_cmb_mls-link', true );
 
 			if ( $instance['show_image'] && $image )
-				if ( $mls )
-					printf( '<a href="%s" title="%s" class="%s">%s</a>', esc_url( $mls ), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
-				else
-					printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
+				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
 
 
 			if ( $instance['show_title'] )

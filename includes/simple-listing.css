@@ -34,7 +34,7 @@
 }
 
 .listing-wrap img {
-	margin-bottom: -6px;
+	margin-bottom: 0;
 }
 
 .simple-listing .content .entry .listing-wrap,
@@ -87,6 +87,7 @@
 .simple-listing .content .entry-header,
 .featuredlisting .entry-header {
 	color: #fff;
+	margin: 0;
 	text-align: center;
 	z-index: 1;
 }

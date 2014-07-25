@@ -26,12 +26,12 @@ function simplelisting_single_content() {
 	if ( $location ) {
 		echo __( '<strong>Location:</strong> ', 'simple-listings-genesis' ) . $location;
 	}
-	if ( $location && $price ) { echo '<br />'; }
 	if ( $price ) {
+		echo '<br />';
 		echo __( '<strong>Transaction Amount:</strong> ', 'simple-listings-genesis' ) . $price;
 	}
-	if ( $price && $mls ) { echo '<br />'; }
 	if ( $mls ) {
+		echo '<br />';
 		echo '<a href="' . esc_url( $mls ) . '" target="_blank">' . __( 'Listing Details', 'simple-listings-genesis' ) . '</a>';
 	}
 }

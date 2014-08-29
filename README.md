@@ -11,8 +11,8 @@ If your site is running a Genesis Framework child theme, this plugin includes a 
 Demo: http://robin.works/listings/
 
 ## Requirements
-* WordPress 3.4, tested up to 3.9.1
-* Genesis Framework (templates and widget will not work with other themes)
+* WordPress 3.4, tested up to 4.0RC1
+* Genesis Framework (templates and widget will not work with other themes, although post type and metaboxes will work with any theme)
 * an HTML5 theme because I was too lazy to add XHTML support back in.
 
 ## Installation
@@ -50,6 +50,13 @@ If you're using an HTML5 Genesis Framework theme, it's done. If you're not, use 
 ### Why did you make this?
 
 The AgentPress Listings plugin has a lot more features and functionality than I needed for a couple of projects, so I thought I'd make a simple version which would allow my client to post their own listings on their own site, but optionally link to the outside MLS service listing. They can feature their own listings without having to re-enter all of the data.
+
+## Changelog
+
+### 1.2.0
+* Reorganized file structure
+* Reconfigured how templates are loaded
+* Body class function for archive/taxonomy moved to template file
 
 ## Credits
 

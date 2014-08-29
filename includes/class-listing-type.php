@@ -17,6 +17,12 @@ class Simple_Listing_Post_Type_Registrations {
 
 	public function init() {
 		add_action( 'init', array( $this, 'register' ) );
+		add_filter( 'cmb_meta_boxes', array( $this, 'set_metaboxes' ) );
+		if ( basename( get_template_directory() ) == 'genesis' ) {
+			add_filter( 'archive_template', array( $this, 'load_archive_template' ) );
+			add_filter( 'single_template', array( $this, 'load_single_template' ) );
+		}
+		add_filter( 'post_class', array( $this, 'set_post_class' ) );
 	}
 
 	/**
@@ -81,6 +87,13 @@ class Simple_Listing_Post_Type_Registrations {
 		register_post_type( $this->post_type, $args );
 	} // ends Listing registration
 
+	/**
+	 * register listing status taxonomy
+	 * @return taxonomy
+	 *
+	 * @since  1.0.0
+	 *
+	 */
 	protected function register_taxonomy_status() {
 		$labels = array(
 			'name'              => __( 'Listing Status', 'simple-listings-genesis' ),
@@ -104,93 +117,95 @@ class Simple_Listing_Post_Type_Registrations {
 		register_taxonomy( $this->taxonomies, $this->post_type, $args );
 
 	}
-}
 
-add_filter( 'cmb_meta_boxes', 'simplelisting_listing_metaboxes' );
-/**
- * Define the metabox and field configurations.
- *
- * @since 1.0.0
- *
- * @param array $meta_boxes Existing meta boxes.
- *
- * @return array            Amended meta boxes.
- *
-*/
-function simplelisting_listing_metaboxes( $meta_boxes ) {
+	/**
+	 * Define the metabox and field configurations.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $meta_boxes Existing meta boxes.
+	 *
+	 * @return array            Amended meta boxes.
+	 *
+	*/
+	public function set_metaboxes( $meta_boxes ) {
 
-	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_cmb_';
+		// Start with an underscore to hide fields from custom fields list
+		$prefix = '_cmb_';
 
-	$meta_boxes[] = array(
-		'id'         => 'listing_metabox',
-		'title'      => __( 'Listing Details', 'simple-listings-genesis' ),
-		'pages'      => array( 'listing' ), // Post type
-		'context'    => 'normal',
-		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
-		'fields'     => array(
-			array(
-				'name' => __( 'MLS Link: ', 'simple-listings-genesis' ),
-				'desc' => __( 'Enter the full URL of your listing. This can be on a separate MLS site or on your own site.', 'simple-listings-genesis' ),
-				'id'   => $prefix . 'mls-link',
-				'type' => 'text',
+		$meta_boxes[] = array(
+			'id'         => 'listing_metabox',
+			'title'      => __( 'Listing Details', 'simple-listings-genesis' ),
+			'pages'      => array( 'listing' ), // Post type
+			'context'    => 'normal',
+			'priority'   => 'high',
+			'show_names' => true, // Show field names on the left
+			'fields'     => array(
+				array(
+					'name' => __( 'MLS Link: ', 'simple-listings-genesis' ),
+					'desc' => __( 'Enter the full URL of your listing. This can be on a separate MLS site or on your own site.', 'simple-listings-genesis' ),
+					'id'   => $prefix . 'mls-link',
+					'type' => 'text',
+				),
+				array(
+					'name' => __( 'Location', 'simple-listings-genesis' ),
+					'desc' => __( 'City, State location information. eg, Chattanooga, Tennessee', 'simple-listings-genesis' ),
+					'id'   => $prefix . 'listing-location',
+					'type' => 'text',
+				),
+				array(
+					'name' => __( 'Transaction Value', 'simple-listings-genesis' ),
+					'desc' => __( 'The sale price or property value.', 'simple-listings-genesis' ),
+					'id'   => $prefix . 'listing-price',
+					'type' => 'text',
+				),
 			),
-			array(
-				'name' => __( 'Location', 'simple-listings-genesis' ),
-				'desc' => __( 'City, State location information. eg, Chattanooga, Tennessee', 'simple-listings-genesis' ),
-				'id'   => $prefix . 'listing-location',
-				'type' => 'text',
-			),
-			array(
-				'name' => __( 'Transaction Value', 'simple-listings-genesis' ),
-				'desc' => __( 'The sale price or property value.', 'simple-listings-genesis' ),
-				'id'   => $prefix . 'listing-price',
-				'type' => 'text',
-			),
-		),
-	);
+		);
 
-	return $meta_boxes;
-}
+		return $meta_boxes;
+	}
 
-
-/**
- * Template Redirect
- * Use plugin templates for custom post types.
- */
-add_filter( 'template_include', 'simplelisting_load_custom_templates' );
-function simplelisting_load_custom_templates( $original_template ) {
-	if ( basename( get_template_directory() ) == 'genesis' ) {
+	/**
+	 * load Listing archive template
+	 * @param  template $archive_template requires Genesis
+	 *
+	 * @since  1.2.0
+	 */
+	public function load_archive_template( $archive_template ) {
 		if ( is_post_type_archive( 'listing' ) || is_tax( 'status' ) ) {
-			return SIMPLELISTING_PATH . '/includes/archive-listing.php';
+			$archive_template = SIMPLELISTING_PATH . '/views/archive-listing.php';
 		}
-		elseif ( is_singular( 'listing' ) ) {
-			return SIMPLELISTING_PATH . '/includes/single-listing.php';
+
+		return $archive_template;
+
+	}
+
+	/**
+	 * load single Listing template
+	 * @param  template $single_template requires Genesis
+	 * @since 1.2.0
+	 */
+	public function load_single_template( $single_template ) {
+		if ( is_singular( 'listing' ) ) {
+			$single_template = SIMPLELISTING_PATH . '/views/single-listing.php';
 		}
-		else {
-			return $original_template;
+
+		return $single_template;
+
+	}
+
+	/**
+	 * set post class for all listings
+	 * @param post_class $classes post class based on taxonomy
+	 *
+	 * @since  1.1.0
+	 */
+	public function set_post_class( $classes ) {
+		global $post;
+		$terms = wp_get_object_terms( $post->ID, 'status' );
+		foreach ( $terms as $term ) {
+			$classes[] = $term->slug;
 		}
+		return $classes;
 	}
-	else {
-		return $original_template;
-	}
-}
-
-add_filter( 'body_class', 'simplelisting_body_class' );
-function simplelisting_body_class( $classes ) {
-	if ( is_post_type_archive( 'listing' ) || is_tax( 'status' ) )
-		$classes[] = 'simple-listing';
-
-	return $classes;
-}
-
-add_filter( 'post_class', 'simplelisting_post_class' );
-function simplelisting_post_class( $classes ) {
-	global $post;
-	$terms = wp_get_object_terms( $post->ID, 'status' );
-	foreach ( $terms as $term ) {
-		$classes[] = $term->slug;
-	}
-	return $classes;
 }

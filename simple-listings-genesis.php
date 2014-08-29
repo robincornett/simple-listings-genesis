@@ -16,7 +16,7 @@
  * Text Domain:       simple-listings-genesis
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Version:           1.1.0
+ * Version:           1.2.0
 */
 
 // If this file is called directly, abort.
@@ -27,8 +27,8 @@ if ( ! defined( 'WPINC' ) ) {
 // Include required files
 define( 'SIMPLELISTING_PATH', plugin_dir_path( __FILE__ ) );
 
-require( SIMPLELISTING_PATH . 'class-listing-registration.php' ); // listing custom post type registration
-require( SIMPLELISTING_PATH . 'class-listing-type.php' );
+require( SIMPLELISTING_PATH . 'includes/class-listing-registration.php' ); // listing custom post type registration
+require( SIMPLELISTING_PATH . 'includes/class-listing-type.php' );
 include( SIMPLELISTING_PATH . 'includes/featured-listing-widget.php' ); // featured listing widget
 
 add_image_size( 'listing-photo', 340, 227, TRUE);

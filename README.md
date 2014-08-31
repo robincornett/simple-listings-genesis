@@ -6,7 +6,7 @@ WordPress plugin that adds a custom post type and taxonomy for real estate listi
 
 This plugin registers a simple custom post type for real estate listings. It also registers a separate listing taxonomy. The plugin supports a featured image, general description, MLS link, location, and price. It does not support detailed input such as square footage, number of bedrooms, etc. If you need that, use AgentPress Listings (http://wordpress.org/plugins/agentpress-listings/) instead.
 
-If your site is running a Genesis Framework child theme, this plugin includes a template for the archive, taxonomy, and single listing page. If you're not running the Genesis Framework, you can create your own templates for these in your theme. If you don't like my templates, comment out line 160 in the class-listing-type.php file. If you don't like my styles, override them in your child theme or comment out line 49 in simple-listings-genesis.php.
+If your site is running a Genesis Framework child theme, this plugin includes a template for the archive, taxonomy, and single listing page. If you're not running the Genesis Framework, you can create your own templates for these in your theme. You can also override these with your own templates/styles in your theme.
 
 Demo: http://robin.works/listings/
 
@@ -50,6 +50,14 @@ If you're using an HTML5 Genesis Framework theme, it's done. If you're not, use 
 ### Why did you make this?
 
 The AgentPress Listings plugin has a lot more features and functionality than I needed for a couple of projects, so I thought I'd make a simple version which would allow my client to post their own listings on their own site, but optionally link to the outside MLS service listing. They can feature their own listings without having to re-enter all of the data.
+
+
+## Screenshots ##
+![Admin: show all listings.](https://github.com/robincornett/simple-listings-genesis/blob/master/assets/screenshot-1.png)  
+__Screenshot of all listings in Admin.__
+
+![Admin: create/update a new listing. Note metaboxes and featured image.](https://github.com/robincornett/simple-listings-genesis/blob/master/assets/screenshot-2.png)  
+__Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
 

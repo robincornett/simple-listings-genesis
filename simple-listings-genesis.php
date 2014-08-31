@@ -64,6 +64,16 @@ function simplelisting_register_widget() {
 	register_widget( 'Genesis_Featured_Listing' );
 }
 
+add_action( 'plugins_loaded', 'simplelisting_load_textdomain' );
+/**
+ * Set up text domain for translations
+ *
+ * @since 1.2.0
+ */
+public function simplelisting_load_textdomain() {
+	load_plugin_textdomain( 'simple-listings-genesis', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
 // Instantiate registration class, so we can add it as a dependency to main plugin class.
 $listing_post_type_registrations = new Simple_Listing_Post_Type_Registrations;
 

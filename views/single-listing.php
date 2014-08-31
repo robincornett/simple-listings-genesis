@@ -24,11 +24,11 @@ function simplelisting_single_content() {
 		echo wpautop( __( '<strong>Description:</strong> ', 'simple-listings-genesis' ) . $description );
 	}
 	if ( $location ) {
-		echo __( '<strong>Location:</strong> ', 'simple-listings-genesis' ) . $location;
+		echo '<strong>' . __( 'Location: ', 'simple-listings-genesis' ) . '</strong> ' . $location;
 	}
 	if ( $price ) {
 		echo '<br />';
-		echo __( '<strong>Transaction Amount:</strong> ', 'simple-listings-genesis' ) . $price;
+		echo '<strong>' . ( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong> ' . $price;
 	}
 	if ( $mls ) {
 		echo '<br />';

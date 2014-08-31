@@ -8,15 +8,17 @@
  * @link      http://robincornett.com
  * @copyright 2014 Robin Cornett Creative, LLC
  *
+ * @wordpress-plugin
  * Plugin Name:       Simple Listings for Genesis
  * Plugin URI:        http://github.com/robincornett/simple-listings-genesis/
  * Description:       This sets up a simple real estate listings custom post type/taxonomy. It pretty much requires the Genesis Framework although it will work without it--just reduced functionality.
+ * Version:           1.2.0
  * Author:            Robin Cornett
  * Author URI:        http://robincornett.com
  * Text Domain:       simple-listings-genesis
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Version:           1.2.0
+ * Domain Path:       /languages
 */
 
 // If this file is called directly, abort.

@@ -4,14 +4,14 @@ WordPress plugin that adds a custom post type and taxonomy for real estate listi
 
 ## Description
 
-This plugin registers a simple custom post type for real estate listings.  It also registers a separate listing taxonomy. The plugin supports a featured image, general description, MLS link, location, and price. It does not support detailed input such as square footage, number of bedrooms, etc. If you need that, use AgentPress Listings (http://wordpress.org/plugins/agentpress-listings/) instead.
+This plugin registers a simple custom post type for real estate listings. It also registers a separate listing taxonomy. The plugin supports a featured image, general description, MLS link, location, and price. It does not support detailed input such as square footage, number of bedrooms, etc. If you need that, use AgentPress Listings (http://wordpress.org/plugins/agentpress-listings/) instead.
 
 If your site is running a Genesis Framework child theme, this plugin includes a template for the archive, taxonomy, and single listing page. If you're not running the Genesis Framework, you can create your own templates for these in your theme. If you don't like my templates, comment out line 160 in the class-listing-type.php file. If you don't like my styles, override them in your child theme or comment out line 49 in simple-listings-genesis.php.
 
 Demo: http://robin.works/listings/
 
 ## Requirements
-* WordPress 3.4, tested up to 4.0RC1
+* WordPress 3.8, tested up to 4.0RC1
 * Genesis Framework (templates and widget will not work with other themes, although post type and metaboxes will work with any theme)
 * an HTML5 theme because I was too lazy to add XHTML support back in.
 

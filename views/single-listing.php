@@ -28,7 +28,7 @@ function simplelisting_single_content() {
 	}
 	if ( $price ) {
 		echo '<br />';
-		echo '<strong>' . ( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong> ' . $price;
+		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong> ' . $price;
 	}
 	if ( $mls ) {
 		echo '<br />';

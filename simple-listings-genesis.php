@@ -61,7 +61,7 @@ function simplelisting_style() {
 // Register the Featured Listing Widget. Requires Genesis Framework.
 add_action( 'widgets_init', 'simplelisting_register_widget' );
 function simplelisting_register_widget() {
-	if ( basename( get_template_directory() == 'genesis' ) {
+	if ( basename( get_template_directory() == 'genesis' ) ) {
 		register_widget( 'Genesis_Featured_Listing' );
 	}
 }
@@ -72,7 +72,7 @@ add_action( 'plugins_loaded', 'simplelisting_load_textdomain' );
  *
  * @since 1.2.0
  */
-public function simplelisting_load_textdomain() {
+function simplelisting_load_textdomain() {
 	load_plugin_textdomain( 'simple-listings-genesis', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 

@@ -17,6 +17,8 @@ This plugin registers a simple custom post type for real estate listings. It als
 
 If your site is running a Genesis Framework child theme, this plugin includes a template for the archive, taxonomy, and single listing page. If you're not running the Genesis Framework, you can create your own templates for these in your theme. You can also override these with your own templates/styles in your theme.
 
+*Note: although this plugin was written with the [Genesis Framework by StudioPress](http://studiopress.com/) in mind, it is not an official plugin for this framework and is neither endorsed nor supported by StudioPress.*
+
 Demo: http://robin.works/listings/
 
 == Installation ==

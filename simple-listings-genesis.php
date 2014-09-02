@@ -61,7 +61,9 @@ function simplelisting_style() {
 // Register the Featured Listing Widget. Requires Genesis Framework.
 add_action( 'widgets_init', 'simplelisting_register_widget' );
 function simplelisting_register_widget() {
-	register_widget( 'Genesis_Featured_Listing' );
+	if ( basename( get_template_directory() == 'genesis' ) {
+		register_widget( 'Genesis_Featured_Listing' );
+	}
 }
 
 add_action( 'plugins_loaded', 'simplelisting_load_textdomain' );

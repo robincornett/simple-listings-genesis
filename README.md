@@ -13,7 +13,7 @@ If your site is running a Genesis Framework child theme, this plugin includes a 
 Demo: http://robin.works/listings/
 
 ## Requirements
-* WordPress 3.8, tested up to 4.0RC1
+* WordPress 3.8, tested up to 4.0RC2
 * Genesis Framework (templates and widget will not work with other themes, although post type and metaboxes will work with any theme)
 * an HTML5 theme because I was too lazy to add XHTML support back in.
 
@@ -53,6 +53,10 @@ If you're using an HTML5 Genesis Framework theme, it's done. If you're not, use 
 
 The AgentPress Listings plugin has a lot more features and functionality than I needed for a couple of projects, so I thought I'd make a simple version which would allow my client to post their own listings on their own site, but optionally link to the outside MLS service listing. They can feature their own listings without having to re-enter all of the data.
 
+### How do I start?
+
+Simple Listings for Genesis works much like creating any other post or page in WordPress. One important thing is that when you are creating a listing, you must set a featured image. If you don't, there is a fallback image, but I'm pretty sure you would rather use your own. Everything else is more or less optional--whether you want to use a description, an outside MLS link, transaction amount, or location.
+
 
 ## Screenshots ##
 ![Admin: show all listings.](https://github.com/robincornett/simple-listings-genesis/blob/master/assets/screenshot-1.png)  
@@ -62,6 +66,13 @@ __Screenshot of all listings in Admin.__
 __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
+
+### 1.2.1
+* Translation strings corrected
+* Single listing template cleaned up (primarily for translation)
+* Fallback image added/set for archive template and widget, if no featured image is set in listing. You really should set a featured image.
+* CSS corrected so archive listing-wrap doesn't have a background
+* Added xml folder/import file so you could import sample listings
 
 ### 1.2.0
 * Reorganized file structure

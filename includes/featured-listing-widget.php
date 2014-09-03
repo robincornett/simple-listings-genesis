@@ -36,8 +36,8 @@ class Genesis_Featured_Listing extends WP_Widget {
 			'image_alignment' => '',
 			'image_size'      => 'listing-photo',
 			'post_type'       => 'listing',
-			'listing_date'     => 0,
-			'show_title'      => 1,
+			'listing_date'    => 0,
+			'show_title'      => 0,
 			'show_status'     => 0,
 			'show_content'    => '',
 			'archive_link'    => 0,
@@ -113,8 +113,27 @@ class Genesis_Featured_Listing extends WP_Widget {
 			) );
 
 
-			if ( $instance['show_image'] && $image )
-				printf( '<a href="%s" title="%s" class="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), esc_attr( $instance['image_alignment'] ), $image );
+			if ( $instance['show_image'] ) {
+				if ( $image ) {
+					printf(
+						'<a href="%s" title="%s" class="%s">%s</a>',
+						get_permalink(),
+						the_title_attribute( 'echo=0' ),
+						esc_attr( $instance['image_alignment'] ),
+						$image
+					);
+				}
+				else {
+					$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
+					printf(
+						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" title="%s" />',
+						get_permalink(),
+						$fallback,
+						the_title_attribute( 'echo=0' ),
+						the_title_attribute( 'echo=0' )
+					);
+				}
+			}
 
 
 			if ( $instance['show_title'] )

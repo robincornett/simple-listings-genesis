@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -38,16 +38,31 @@ If you're using an HTML5 Genesis Framework theme, it's done. If you're not, use 
 
 The AgentPress Listings plugin has a lot more features and functionality than I needed for a couple of projects, so I thought I'd make a simple version which would allow my client to post their own listings on their own site, but optionally link to the outside MLS service listing. They can feature their own listings without having to re-enter all of the data.
 
+= How do I start? =
+
+Simple Listings for Genesis works much like creating any other post or page in WordPress. One important thing is that when you are creating a listing, you must set a featured image. If you don't, there is a fallback image, but I'm pretty sure you would rather use your own. Everything else is more or less optional--whether you want to use a description, an outside MLS link, transaction amount, or location.
+
 == Screenshots ==
 
 1. Admin: show all listings.
 2. Admin: create/update a new listing. Note metaboxes and featured image.
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+Templates cleaned up and translation strings corrected.
+
 = 1.2.0 =
 This version reorganizes and tightens up all the code. Hoping for wordpress.org release. No new functionality.
 
 == Changelog ==
+
+= 1.2.1 =
+* Translation strings corrected
+* Single listing template cleaned up (primarily for translation)
+* Fallback image added/set for archive template and widget, if no featured image is set in listing. You really should set a featured image.
+* CSS corrected so archive listing-wrap doesn't have a background
+* Added xml folder/import file so you could import sample listings
 
 = 1.2.0 =
 * Reorganized file structure

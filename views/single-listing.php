@@ -19,9 +19,9 @@ function simplelisting_single_content() {
 	$description = get_the_content();
 	$mls         = get_post_meta( $post->ID, '_cmb_mls-link', true );
 
-	echo get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'alignright', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+	echo get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
 	if ( $description ) {
-		echo wpautop( __( '<strong>Description:</strong> ', 'simple-listings-genesis' ) . $description );
+		echo wpautop( '<strong>' . __( 'Description: ', 'simple-listings-genesis' ) . '</strong>' . $description );
 	}
 	if ( $location ) {
 		echo '<strong>' . __( 'Location: ', 'simple-listings-genesis' ) . '</strong> ' . $location;

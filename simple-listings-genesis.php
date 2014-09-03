@@ -12,7 +12,7 @@
  * Plugin Name:       Simple Listings for Genesis
  * Plugin URI:        http://github.com/robincornett/simple-listings-genesis/
  * Description:       This sets up a simple real estate listings custom post type/taxonomy. It pretty much requires the Genesis Framework although it will work without it--just reduced functionality.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Robin Cornett
  * Author URI:        http://robincornett.com
  * Text Domain:       simple-listings-genesis
@@ -59,11 +59,13 @@ function simplelisting_style() {
 }
 
 // Register the Featured Listing Widget. Requires Genesis Framework.
-add_action( 'widgets_init', 'simplelisting_register_widget' );
+add_action( 'genesis_setup', 'simplelisting_register_genesis_widget' );
+function simplelisting_register_genesis_widget() {
+	add_action( 'widgets_init', 'simplelisting_register_widget' );
+}
+
 function simplelisting_register_widget() {
-	if ( basename( get_template_directory() == 'genesis' ) ) {
-		register_widget( 'Genesis_Featured_Listing' );
-	}
+	register_widget( 'Genesis_Featured_Listing' );
 }
 
 add_action( 'plugins_loaded', 'simplelisting_load_textdomain' );

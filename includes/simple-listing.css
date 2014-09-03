@@ -39,9 +39,12 @@
 
 .simple-listing .content .entry .listing-wrap,
 .featuredlisting .listing-wrap {
-	background-color: #555;
 	max-width: 340px;
 	position: relative;
+}
+
+.featuredlisting .listing-wrap {
+	background-color: #555;
 }
 
 .featuredlisting > a,

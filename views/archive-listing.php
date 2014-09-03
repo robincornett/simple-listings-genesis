@@ -29,15 +29,29 @@ function simplelisting_loop() {
 		$status = get_the_term_list( $post->ID, 'status', '', ', ', '' ); ?>
 
 			<article <?php post_class(); ?>><div class="listing-wrap"> <?php
-				echo '<a href="' . get_permalink() . '">' . get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+				$image    = get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+				$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
 
-			echo genesis_html5() ? '<header class="entry-header">' : '';
-			printf( '<h2 class="entry-title">%s</h2>', the_title_attribute( 'echo=0' ), get_the_title() );
+				if ( $image ) {
+					echo '<a href="' . get_permalink() . '">' . $image;
+				}
+				else {
+					printf(
+						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" title="%s" />',
+						get_permalink(),
+						$fallback,
+						the_title_attribute( 'echo=0' ),
+						the_title_attribute( 'echo=0' )
+					);
+				}
 
-			if ( $status ) {
-				echo '<span class="listing-status">' . strip_tags( $status ) . '</span>';
-			}
-			echo genesis_html5() ? '</header>' : '';
+				echo genesis_html5() ? '<header class="entry-header">' : '';
+				printf( '<h2 class="entry-title">%s</h2>', the_title_attribute( 'echo=0' ) );
+
+				if ( $status ) {
+					echo '<span class="listing-status">' . strip_tags( $status ) . '</span>';
+				}
+				echo genesis_html5() ? '</header>' : '';
 
 			echo '</a></div></article>';
 

@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -49,6 +49,9 @@ Simple Listings for Genesis works much like creating any other post or page in W
 
 == Upgrade Notice ==
 
+= 1.3.0 =
+Updated to include styling and hooks for XHTML compatibility. HTML5 theme users won't see a difference.
+
 = 1.2.1 =
 Templates cleaned up and translation strings corrected.
 
@@ -56,6 +59,9 @@ Templates cleaned up and translation strings corrected.
 This version reorganizes and tightens up all the code. Hoping for wordpress.org release. No new functionality.
 
 == Changelog ==
+
+= 1.3.0 =
+* added XHTML actions/styling for backwards compatibility.
 
 = 1.2.1 =
 * Translation strings corrected

@@ -13,9 +13,8 @@ If your site is running a Genesis Framework child theme, this plugin includes a 
 Demo: http://robin.works/listings/
 
 ## Requirements
-* WordPress 3.8, tested up to 4.0RC2
+* WordPress 3.8, tested up to 4.0
 * Genesis Framework (templates and widget will not work with other themes, although post type and metaboxes will work with any theme)
-* an HTML5 theme because I was too lazy to add XHTML support back in.
 
 ## Installation
 
@@ -66,6 +65,9 @@ __Screenshot of all listings in Admin.__
 __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
+
+### 1.3.0
+* added XHTML actions/styling for backwards compatibility.
 
 ### 1.2.1
 * Translation strings corrected

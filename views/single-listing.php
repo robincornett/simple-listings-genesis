@@ -8,8 +8,13 @@
  *
  */
 
+remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+remove_action( 'genesis_before_post_content', 'genesis_post_info' );
+
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+remove_action( 'genesis_post_content', 'genesis_do_post_content' );
 add_action( 'genesis_entry_content', 'simplelisting_single_content' );
+add_action( 'genesis_post_content', 'simplelisting_single_content' );
 
 function simplelisting_single_content() {
 	global $post;
@@ -28,12 +33,16 @@ function simplelisting_single_content() {
 	}
 	if ( $price ) {
 		echo '<br />';
-		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong> ' . $price;
+		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong>' . $price;
 	}
 	if ( $mls ) {
 		echo '<br />';
 		echo '<a href="' . esc_url( $mls ) . '" target="_blank">' . __( 'Listing Details', 'simple-listings-genesis' ) . '</a>';
 	}
+
 }
+
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+remove_action( 'genesis_after_post_content', 'genesis_post_meta' );
 
 genesis();

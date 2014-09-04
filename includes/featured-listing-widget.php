@@ -33,7 +33,6 @@ class Genesis_Featured_Listing extends WP_Widget {
 			'orderby'         => 'rand',
 			'order'           => 'DESC',
 			'show_image'      => 0,
-			'image_alignment' => '',
 			'image_size'      => 'listing-photo',
 			'post_type'       => 'listing',
 			'listing_date'    => 0,
@@ -101,7 +100,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 
 			genesis_markup( array(
 				'html5'   => '<article %s><div class="listing-wrap">',
-				'xhtml'   => sprintf( '<div class="%s">', implode( ' ', get_post_class() ) ),
+				'xhtml'   => sprintf( '<div class="%s"><div class="listing-wrap">', implode( ' ', get_post_class() ) ),
 				'context' => 'entry',
 			) );
 
@@ -116,17 +115,16 @@ class Genesis_Featured_Listing extends WP_Widget {
 			if ( $instance['show_image'] ) {
 				if ( $image ) {
 					printf(
-						'<a href="%s" title="%s" class="%s">%s</a>',
+						'<a href="%s" title="%s">%s</a>',
 						get_permalink(),
 						the_title_attribute( 'echo=0' ),
-						esc_attr( $instance['image_alignment'] ),
 						$image
 					);
 				}
 				else {
 					$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
 					printf(
-						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" title="%s" />',
+						'<a href="%s"><img src="%s" alt="%s" title="%s" />',
 						get_permalink(),
 						$fallback,
 						the_title_attribute( 'echo=0' ),
@@ -169,7 +167,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 
 		genesis_markup( array(
 		'html5' => '</div></article>',
-		'xhtml' => '</div>',
+		'xhtml' => '</div></div>',
 		) );
 
 		endwhile; endif;
@@ -288,15 +286,6 @@ class Genesis_Featured_Listing extends WP_Widget {
 				<p>
 					<input id="<?php echo $this->get_field_id( 'show_image' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_image' ); ?>" value="1" <?php checked( $instance['show_image'] ); ?>/>
 					<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Show Featured Image', 'simple-listings-genesis' ); ?></label>
-				</p>
-
-				<p>
-					<label for="<?php echo $this->get_field_id( 'image_alignment' ); ?>"><?php _e( 'Image Alignment', 'simple-listings-genesis' ); ?>:</label>
-					<select id="<?php echo $this->get_field_id( 'image_alignment' ); ?>" name="<?php echo $this->get_field_name( 'image_alignment' ); ?>">
-						<option value="alignnone">- <?php _e( 'None', 'simple-listings-genesis' ); ?> -</option>
-						<option value="alignleft" <?php selected( 'alignleft', $instance['image_alignment'] ); ?>><?php _e( 'Left', 'simple-listings-genesis' ); ?></option>
-						<option value="alignright" <?php selected( 'alignright', $instance['image_alignment'] ); ?>><?php _e( 'Right', 'simple-listings-genesis' ); ?></option>
-					</select>
 				</p>
 
 				<p>

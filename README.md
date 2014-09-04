@@ -46,7 +46,7 @@ Then go to your Plugins screen and click __Activate__.
 
 ### How can I display listing items differently than regular posts?
 
-If you're using an HTML5 Genesis Framework theme, it's done. If you're not, use the included templates as a reference and have fun.
+If you're using a Genesis Framework theme, it's done. If you're not, use the included templates as a reference and have fun.
 
 ### Why did you make this?
 

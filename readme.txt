@@ -50,7 +50,7 @@ Simple Listings for Genesis works much like creating any other post or page in W
 == Upgrade Notice ==
 
 = 1.3.0 =
-Updated to include styling and hooks for XHTML compatibility. HTML5 theme users won't see a difference.
+Updated to include styling and hooks for XHTML compatibility. Minor CSS tweaks.
 
 = 1.2.1 =
 Templates cleaned up and translation strings corrected.
@@ -62,6 +62,7 @@ This version reorganizes and tightens up all the code. Hoping for wordpress.org 
 
 = 1.3.0 =
 * added XHTML actions/styling for backwards compatibility.
+* Removed image alignment from widget as it was irrelevant.
 
 = 1.2.1 =
 * Translation strings corrected

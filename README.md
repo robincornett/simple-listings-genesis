@@ -68,6 +68,8 @@ __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ### 1.3.0
 * added XHTML actions/styling for backwards compatibility.
+* removed irrelevant image alignment option from widget.
+* CSS tweaks.
 
 ### 1.2.1
 * Translation strings corrected

@@ -18,6 +18,13 @@ function simplelisting_body_class( $classes ) {
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'simplelisting_archive_loops' );
 
+/**
+ * Chooses which archive loop to run, HTML5 or XHTML.
+ *
+ * @since  1.3.0
+ *
+ * @return genesis archive loop
+ */
 function simplelisting_archive_loops() {
 	if ( genesis_html5() ) {
 		simplelisting_loop_html5();
@@ -27,6 +34,13 @@ function simplelisting_archive_loops() {
 	}
 }
 
+/**
+ * Simple Listings HTML5 loop
+ *
+ * @since  1.3.0
+ *
+ * @return HTML5 loop
+ */
 function simplelisting_loop_html5() {
 
 	global $post;
@@ -71,6 +85,13 @@ function simplelisting_loop_html5() {
 	echo '</div>';
 }
 
+/**
+ * Simple Listings XHTML loop
+ *
+ * @since  1.3.0
+ *
+ * @return XHTML loop
+ */
 function simplelisting_loop_xhtml() {
 
 	global $post;

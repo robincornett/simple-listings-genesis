@@ -1,11 +1,11 @@
 === Simple Listings for Genesis ===
 
 Contributors: littler.chicken
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FEFGGUG88LBKQ
+Donate link: https://robincornett.com/donate/
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.3.0
+Tested up to: 4.1
+Stable tag: x.y.z
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -55,10 +55,15 @@ Updated to include styling and hooks for XHTML compatibility. Minor CSS tweaks.
 = 1.2.1 =
 Templates cleaned up and translation strings corrected.
 
-= 1.2.0 =
-This version reorganizes and tightens up all the code. Hoping for wordpress.org release. No new functionality.
+= x.y.z =
+new admin columns! and ready for WordPress 4.1
 
 == Changelog ==
+
+= x.y.z =
+* added admin columns
+* updated single-listing
+* compatible with WP4.1
 
 = 1.3.0 =
 * added XHTML actions/styling for backwards compatibility.

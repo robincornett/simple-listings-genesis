@@ -36,16 +36,16 @@ include( SIMPLELISTING_PATH . 'includes/featured-listing-widget.php' ); // featu
 add_image_size( 'listing-photo', 340, 227, TRUE);
 
 add_action( 'init', 'simplelisting_initialize_cmb_meta_boxes', 9999 );
+
 /**
- * Define the metabox and field configurations.
- *
- * @since 1.0.0
- *
+ * set up metaboxes
+ * @since  x.y.z
  */
-function simplelisting_initialize_cmb_meta_boxes() {
-	if ( !class_exists( 'cmb_Meta_Box' ) ) {
-		require_once( SIMPLELISTING_PATH . '/metabox/init.php' );
-	}
+if ( file_exists(  __DIR__ .'/includes/cmb2/init.php' ) ) {
+	require_once  __DIR__ .'/includes/cmb2/init.php';
+}
+elseif ( file_exists(  __DIR__ .'/includes/CMB2/init.php' ) ) {
+	require_once  __DIR__ .'/includes/CMB2/init.php';
 }
 
 add_action( 'wp_enqueue_scripts', 'simplelisting_style' );

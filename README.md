@@ -66,6 +66,9 @@ __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
 
+### 1.4.1
+* bugfix: invalid header warnings on activation (CMB2)
+
 ### 1.4.0
 * added admin columns
 * updated single-listing

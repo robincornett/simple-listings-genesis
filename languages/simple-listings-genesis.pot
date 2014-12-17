@@ -4,225 +4,221 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Simple Listings for Genesis 1.2.1\n"
-"POT-Creation-Date: 2014-08-31 17:48-0500\n"
-"PO-Revision-Date: 2014-09-03 09:28-0500\n"
+"Project-Id-Version: Simple Listings for Genesis 1.4.0\n"
 "Report-Msgid-Bugs-To: Robin Cornett <hello@robincornett.com>\n"
+"POT-Creation-Date: 2014-12-17 09:50-0500\n"
+"PO-Revision-Date: 2014-12-17 09:51-0500\n"
 "Last-Translator: Robin Cornett <hello@robincornett.com>\n"
 "Language-Team: Robin Cornett <hello@robincornett.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Bookmarks: \n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
 "X-Textdomain-Support: yes\n"
-"X-Poedit-SearchPathExcluded-0: ../metabox\n"
-
-#: ../includes/class-listing-type.php:41 ../includes/class-listing-type.php:43
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../cmb2\n"
+#: ../includes/class-listing-type.php:43 ../includes/class-listing-type.php:45
 msgid "Listings"
 msgstr ""
 
-#: ../includes/class-listing-type.php:42 ../includes/class-listing-type.php:64
+#: ../includes/class-listing-type.php:44 ../includes/class-listing-type.php:66
+#: ../includes/class-listing-type.php:211
 msgid "Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:44
+#: ../includes/class-listing-type.php:46
 msgid "Parent Listing:"
 msgstr ""
 
-#: ../includes/class-listing-type.php:45
+#: ../includes/class-listing-type.php:47
 msgid "All Listings"
 msgstr ""
 
-#: ../includes/class-listing-type.php:46
+#: ../includes/class-listing-type.php:48
 msgid "View Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:47
+#: ../includes/class-listing-type.php:49
 msgid "Add New Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:48
+#: ../includes/class-listing-type.php:50
 msgid "New Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:49
+#: ../includes/class-listing-type.php:51
 msgid "Edit Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:50
+#: ../includes/class-listing-type.php:52
 msgid "Update Listing"
 msgstr ""
 
-#: ../includes/class-listing-type.php:51
+#: ../includes/class-listing-type.php:53
 msgid "Search Listings"
 msgstr ""
 
-#: ../includes/class-listing-type.php:52
+#: ../includes/class-listing-type.php:54
 msgid "No Listings found"
 msgstr ""
 
-#: ../includes/class-listing-type.php:53
+#: ../includes/class-listing-type.php:55
 msgid "No Listings found in Trash"
 msgstr ""
 
-#: ../includes/class-listing-type.php:65
+#: ../includes/class-listing-type.php:67
 msgid "Listing information"
 msgstr ""
 
-#: ../includes/class-listing-type.php:99
-#: ../includes/class-listing-type.php:100
-#: ../includes/featured-listing-widget.php:223
+#: ../includes/class-listing-type.php:101
+#: ../includes/class-listing-type.php:102
+#: ../includes/class-listing-type.php:216
+#: ../includes/featured-listing-widget.php:240
 msgid "Listing Status"
 msgstr ""
 
-#: ../includes/class-listing-type.php:138 ../views/single-listing.php:35
+#: ../includes/class-listing-type.php:140 ../views/single-listing.php:39
 msgid "Listing Details"
 msgstr ""
 
-#: ../includes/class-listing-type.php:145
+#: ../includes/class-listing-type.php:147
 msgid "MLS Link: "
 msgstr ""
 
-#: ../includes/class-listing-type.php:146
+#: ../includes/class-listing-type.php:148
 msgid ""
 "Enter the full URL of your listing. This can be on a separate MLS site or on "
 "your own site."
 msgstr ""
 
-#: ../includes/class-listing-type.php:151
+#: ../includes/class-listing-type.php:153
+#: ../includes/class-listing-type.php:214
 msgid "Location"
 msgstr ""
 
-#: ../includes/class-listing-type.php:152
+#: ../includes/class-listing-type.php:154
 msgid "City, State location information. eg, Chattanooga, Tennessee"
 msgstr ""
 
-#: ../includes/class-listing-type.php:157
+#: ../includes/class-listing-type.php:159
 msgid "Transaction Value"
 msgstr ""
 
-#: ../includes/class-listing-type.php:158
+#: ../includes/class-listing-type.php:160
 msgid "The sale price or property value."
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:49
+#: ../includes/class-listing-type.php:212
+msgid "Photo"
+msgstr ""
+
+#: ../includes/class-listing-type.php:213
+msgid "MLS Link"
+msgstr ""
+
+#: ../includes/class-listing-type.php:215
+msgid "Price"
+msgstr ""
+
+#: ../includes/featured-listing-widget.php:48
 msgid "Displays featured listings with thumbnails"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:58
+#: ../includes/featured-listing-widget.php:57
 msgid "Featured Listing"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:214
-#: ../includes/featured-listing-widget.php:251
+#: ../includes/featured-listing-widget.php:231
+#: ../includes/featured-listing-widget.php:268
 msgid "Title"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:231
+#: ../includes/featured-listing-widget.php:248
 msgid "No Status"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:238
+#: ../includes/featured-listing-widget.php:255
 msgid "Number of Listings to Show"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:243
+#: ../includes/featured-listing-widget.php:260
 msgid "Number of Listings to Offset/Hide"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:248
+#: ../includes/featured-listing-widget.php:265
 msgid "Order By"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:250
+#: ../includes/featured-listing-widget.php:267
 msgid "Date"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:252
+#: ../includes/featured-listing-widget.php:269
 msgid "ID"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:253
+#: ../includes/featured-listing-widget.php:270
 msgid "Random"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:258
+#: ../includes/featured-listing-widget.php:275
 msgid "Sort Order"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:260
+#: ../includes/featured-listing-widget.php:277
 msgid "Descending (3, 2, 1)"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:261
+#: ../includes/featured-listing-widget.php:278
 msgid "Ascending (1, 2, 3)"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:271
+#: ../includes/featured-listing-widget.php:288
 msgid "Show Featured Image"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:275
-msgid "Image Alignment"
-msgstr ""
-
-#: ../includes/featured-listing-widget.php:277
-msgid "None"
-msgstr ""
-
-#: ../includes/featured-listing-widget.php:278
-msgid "Left"
-msgstr ""
-
-#: ../includes/featured-listing-widget.php:279
-msgid "Right"
-msgstr ""
-
-#: ../includes/featured-listing-widget.php:285
+#: ../includes/featured-listing-widget.php:293
 msgid "Show Status"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:290
+#: ../includes/featured-listing-widget.php:298
 msgid "Show Listing Title"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:294
+#: ../includes/featured-listing-widget.php:302
 msgid "Show the content?"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:296
+#: ../includes/featured-listing-widget.php:304
 msgid "Do Not Show Content"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:297
+#: ../includes/featured-listing-widget.php:305
 msgid "Show Content"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:302
+#: ../includes/featured-listing-widget.php:310
 msgid "Show Archive Link (this will show all listings)"
 msgstr ""
 
-#: ../includes/featured-listing-widget.php:305
+#: ../includes/featured-listing-widget.php:313
 msgid "Link Text"
 msgstr ""
 
-#: ../views/single-listing.php:24
+#: ../views/single-listing.php:28
 msgid "Description: "
 msgstr ""
 
-#: ../views/single-listing.php:27
+#: ../views/single-listing.php:31
 msgid "Location: "
 msgstr ""
 
-#: ../views/single-listing.php:31
+#: ../views/single-listing.php:35
 msgid "Transaction Amount: "
 msgstr ""

@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-// Include required files
+//* Include required files
 define( 'SIMPLELISTING_PATH', plugin_dir_path( __FILE__ ) );
 
 require( SIMPLELISTING_PATH . 'includes/class-listing-registration.php' ); // listing custom post type registration
@@ -34,8 +34,6 @@ require( SIMPLELISTING_PATH . 'includes/class-listing-type.php' );
 include( SIMPLELISTING_PATH . 'includes/featured-listing-widget.php' ); // featured listing widget
 
 add_image_size( 'listing-photo', 340, 227, TRUE);
-
-add_action( 'init', 'simplelisting_initialize_cmb_meta_boxes', 9999 );
 
 /**
  * set up metaboxes

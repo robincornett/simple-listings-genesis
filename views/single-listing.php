@@ -17,23 +17,22 @@ add_action( 'genesis_entry_content', 'simplelisting_single_content' );
 add_action( 'genesis_post_content', 'simplelisting_single_content' );
 
 function simplelisting_single_content() {
-	global $post;
 
-	$location    = get_post_meta( $post->ID, '_cmb_listing-location', true );
-	$price       = get_post_meta( $post->ID, '_cmb_listing-price', true );
+	$location    = get_post_meta( get_the_ID(), '_cmb_listing-location', true );
+	$price       = get_post_meta( get_the_ID(), '_cmb_listing-price', true );
 	$description = get_the_content();
-	$mls         = get_post_meta( $post->ID, '_cmb_mls-link', true );
+	$mls         = get_post_meta( get_the_ID(), '_cmb_mls-link', true );
 
-	echo get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
+	echo get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
 	if ( $description ) {
 		echo wpautop( '<strong>' . __( 'Description: ', 'simple-listings-genesis' ) . '</strong>' . $description );
 	}
 	if ( $location ) {
-		echo '<strong>' . __( 'Location: ', 'simple-listings-genesis' ) . '</strong> ' . $location;
+		echo '<strong>' . __( 'Location: ', 'simple-listings-genesis' ) . '</strong> ' . esc_attr( $location );
 	}
 	if ( $price ) {
 		echo '<br />';
-		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong>' . $price;
+		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong>' . esc_attr( $price );
 	}
 	if ( $mls ) {
 		echo '<br />';

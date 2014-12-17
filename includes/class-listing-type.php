@@ -201,7 +201,7 @@ class Simple_Listing_Post_Type_Registrations {
 	 * add listing columns
 	 * @param admin $columns adds columns for photo, link, location, price, status
 	 *
-	 * @since  x.y.z
+	 * @since  1.4.0
 	 */
 	public function add_columns( $columns ) {
 
@@ -226,7 +226,7 @@ class Simple_Listing_Post_Type_Registrations {
 	 * @param  each post $post_id listing
 	 * @return $column          new columns for photo, link, location, price, status
 	 *
-	 * @since  x.y.z
+	 * @since  1.4.0
 	 */
 	public function custom_columns( $column, $post_id ) {
 		switch ( $column ) {

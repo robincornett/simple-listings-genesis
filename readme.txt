@@ -5,7 +5,7 @@ Donate link: https://robincornett.com/donate/
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: x.y.z
+Stable tag: 1.4.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -55,14 +55,15 @@ Updated to include styling and hooks for XHTML compatibility. Minor CSS tweaks.
 = 1.2.1 =
 Templates cleaned up and translation strings corrected.
 
-= x.y.z =
+= 1.4.0 =
 new admin columns! and ready for WordPress 4.1
 
 == Changelog ==
 
-= x.y.z =
+= 1.4.0 =
 * added admin columns
 * updated single-listing
+* updated custom metaboxes (CMB2)
 * compatible with WP4.1
 
 = 1.3.0 =

@@ -12,7 +12,7 @@
  * Plugin Name:       Simple Listings for Genesis
  * Plugin URI:        http://github.com/robincornett/simple-listings-genesis/
  * Description:       This sets up a simple real estate listings custom post type/taxonomy. It pretty much requires the Genesis Framework although it will work without it--just reduced functionality.
- * Version:           x.y.z
+ * Version:           1.4.0
  * Author:            Robin Cornett
  * Author URI:        http://robincornett.com
  * Text Domain:       simple-listings-genesis
@@ -37,7 +37,7 @@ add_image_size( 'listing-photo', 340, 227, TRUE);
 
 /**
  * set up metaboxes
- * @since  x.y.z
+ * @since  1.4.0
  */
 if ( file_exists(  __DIR__ .'/cmb2/init.php' ) ) {
 	require_once  __DIR__ .'/cmb2/init.php';

@@ -66,9 +66,10 @@ __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
 
-### x.y.z
+### 1.4.0
 * added admin columns
 * updated single-listing
+* updated custom metaboxes (CMB2)
 * compatible with WP4.1
 
 ### 1.3.0

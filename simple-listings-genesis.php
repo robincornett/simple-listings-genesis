@@ -39,11 +39,11 @@ add_image_size( 'listing-photo', 340, 227, TRUE);
  * set up metaboxes
  * @since  x.y.z
  */
-if ( file_exists(  __DIR__ .'/includes/cmb2/init.php' ) ) {
-	require_once  __DIR__ .'/includes/cmb2/init.php';
+if ( file_exists(  __DIR__ .'/cmb2/init.php' ) ) {
+	require_once  __DIR__ .'/cmb2/init.php';
 }
-elseif ( file_exists(  __DIR__ .'/includes/CMB2/init.php' ) ) {
-	require_once  __DIR__ .'/includes/CMB2/init.php';
+elseif ( file_exists(  __DIR__ .'/CMB2/init.php' ) ) {
+	require_once  __DIR__ .'/CMB2/init.php';
 }
 
 add_action( 'wp_enqueue_scripts', 'simplelisting_style' );

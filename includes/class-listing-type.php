@@ -17,11 +17,13 @@ class Simple_Listing_Post_Type_Registrations {
 
 	public function init() {
 		add_action( 'init', array( $this, 'register' ) );
-		add_filter( 'cmb_meta_boxes', array( $this, 'set_metaboxes' ) );
+		add_filter( 'cmb2_meta_boxes', array( $this, 'set_metaboxes' ) );
 		if ( basename( get_template_directory() ) == 'genesis' ) {
 			add_filter( 'archive_template', array( $this, 'load_archive_template' ) );
 			add_filter( 'single_template', array( $this, 'load_single_template' ) );
 		}
+		add_filter( 'manage_listing_posts_columns', array( $this, 'add_columns' ) );
+		add_action( 'manage_listing_posts_custom_column', array( $this, 'custom_columns' ), 10, 2 );
 		add_filter( 'post_class', array( $this, 'set_post_class' ) );
 	}
 
@@ -128,24 +130,24 @@ class Simple_Listing_Post_Type_Registrations {
 	 * @return array            Amended meta boxes.
 	 *
 	*/
-	public function set_metaboxes( $meta_boxes ) {
+	public function set_metaboxes( array $meta_boxes ) {
 
 		// Start with an underscore to hide fields from custom fields list
 		$prefix = '_cmb_';
 
-		$meta_boxes[] = array(
-			'id'         => 'listing_metabox',
-			'title'      => __( 'Listing Details', 'simple-listings-genesis' ),
-			'pages'      => array( 'listing' ), // Post type
-			'context'    => 'normal',
-			'priority'   => 'high',
-			'show_names' => true, // Show field names on the left
-			'fields'     => array(
+		$meta_boxes['listings'] = array(
+			'id'           => 'listing_metabox',
+			'title'        => __( 'Listing Details', 'simple-listings-genesis' ),
+			'object_types' => array( 'listing' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true, // Show field names on the left
+			'fields'       => array(
 				array(
 					'name' => __( 'MLS Link: ', 'simple-listings-genesis' ),
 					'desc' => __( 'Enter the full URL of your listing. This can be on a separate MLS site or on your own site.', 'simple-listings-genesis' ),
 					'id'   => $prefix . 'mls-link',
-					'type' => 'text',
+					'type' => 'text_url',
 				),
 				array(
 					'name' => __( 'Location', 'simple-listings-genesis' ),
@@ -163,6 +165,7 @@ class Simple_Listing_Post_Type_Registrations {
 		);
 
 		return $meta_boxes;
+
 	}
 
 	/**
@@ -195,17 +198,79 @@ class Simple_Listing_Post_Type_Registrations {
 	}
 
 	/**
+	 * add listing columns
+	 * @param admin $columns adds columns for photo, link, location, price, status
+	 *
+	 * @since  x.y.z
+	 */
+	public function add_columns( $columns ) {
+
+		unset( $columns['date'] );
+		$columns = array(
+			'cb'              => '<input type="checkbox" />',
+			'title'           => __( 'Listing', 'simple-listings-genesis' ),
+			'listing_photo'   => __( 'Photo', 'simple-listings-genesis' ),
+			'mls_link'        => __( 'MLS Link', 'simple-listings-genesis' ),
+			'location'        => __( 'Location', 'simple-listings-genesis' ),
+			'price'           => __( 'Price', 'simple-listings-genesis' ),
+			'taxonomy-status' => __( 'Listing Status', 'simple-listings-genesis' )
+		);
+
+		return $columns;
+
+	}
+
+	/**
+	 * build custom admin columns
+	 * @param  admin $column  new columns
+	 * @param  each post $post_id listing
+	 * @return $column          new columns for photo, link, location, price, status
+	 *
+	 * @since  x.y.z
+	 */
+	public function custom_columns( $column, $post_id ) {
+		switch ( $column ) {
+
+		case 'listing_photo' :
+			$photo = get_the_post_thumbnail( $post_id, array( 65,65 ) );
+			if ( $photo ) {
+				echo $photo;
+			}
+			break;
+		case 'mls_link' :
+			$mls = get_post_meta( $post_id, '_cmb_mls-link', true );
+			if ( $mls ) {
+				echo '<a href="' . esc_url( $mls ) . '" target="_blank">' . esc_url( $mls ) . '</a>';
+			}
+			break;
+		case 'price' :
+			$price       = get_post_meta( $post_id, '_cmb_listing-price', true );
+			if ( $price ) {
+				echo esc_attr( $price );
+			}
+			break;
+		case 'location' :
+			$location = get_post_meta( $post_id, '_cmb_listing-location', true );
+			if ( $location ) {
+				echo esc_html( $location );
+			}
+			break;
+		}
+	}
+
+	/**
 	 * set post class for all listings
 	 * @param post_class $classes post class based on taxonomy
 	 *
 	 * @since  1.1.0
 	 */
 	public function set_post_class( $classes ) {
-		global $post;
-		$terms = wp_get_object_terms( $post->ID, 'status' );
+
+		$terms = wp_get_object_terms( get_the_ID(), 'status' );
 		foreach ( $terms as $term ) {
 			$classes[] = $term->slug;
 		}
+
 		return $classes;
 	}
 }

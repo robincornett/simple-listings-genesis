@@ -214,6 +214,16 @@ class Simple_Listing_Post_Type_Registrations {
 			'price'           => __( 'Price', 'simple-listings-genesis' ),
 			'taxonomy-status' => __( 'Listing Status', 'simple-listings-genesis' )
 		);
+		if ( class_exists( 'Display_Featured_Image_Genesis' ) ) {
+			$columns = array(
+				'cb'              => '<input type="checkbox" />',
+				'title'           => __( 'Listing', 'simple-listings-genesis' ),
+				'mls_link'        => __( 'MLS Link', 'simple-listings-genesis' ),
+				'location'        => __( 'Location', 'simple-listings-genesis' ),
+				'price'           => __( 'Price', 'simple-listings-genesis' ),
+				'taxonomy-status' => __( 'Listing Status', 'simple-listings-genesis' )
+			);
+		}
 
 		return $columns;
 

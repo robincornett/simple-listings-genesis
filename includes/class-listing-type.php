@@ -175,7 +175,7 @@ class Simple_Listing_Post_Type_Registrations {
 	 */
 	public function load_archive_template( $archive_template ) {
 		if ( is_post_type_archive( 'listing' ) || is_tax( 'status' ) ) {
-			$archive_template = SIMPLELISTING_PATH . '/views/archive-listing.php';
+			$archive_template = plugin_dir_path( dirname( __FILE__ ) ) . 'views/archive-listing.php';
 		}
 
 		return $archive_template;
@@ -189,7 +189,7 @@ class Simple_Listing_Post_Type_Registrations {
 	 */
 	public function load_single_template( $single_template ) {
 		if ( is_singular( 'listing' ) ) {
-			$single_template = SIMPLELISTING_PATH . '/views/single-listing.php';
+			$single_template = plugin_dir_path( dirname( __FILE__ ) ) . '/views/single-listing.php';
 		}
 
 		return $single_template;

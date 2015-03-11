@@ -26,24 +26,32 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-//* Include required files
-define( 'SIMPLELISTING_PATH', plugin_dir_path( __FILE__ ) );
+// Include required files
+function simple_listings_require() {
+	$files = array(
+		'class-listing-registration',
+		'class-listing-type',
+		'featured-listing-widget',
+	);
 
-require( SIMPLELISTING_PATH . 'includes/class-listing-registration.php' ); // listing custom post type registration
-require( SIMPLELISTING_PATH . 'includes/class-listing-type.php' );
-include( SIMPLELISTING_PATH . 'includes/featured-listing-widget.php' ); // featured listing widget
+	foreach ( $files as $file ) {
+		require plugin_dir_path( __FILE__ ) . 'includes/' . $file . '.php';
+	}
+}
+simple_listings_require();
 
-add_image_size( 'listing-photo', 340, 227, TRUE);
+// add listing image size
+add_image_size( 'listing-photo', 340, 227, true );
 
 /**
  * set up metaboxes
  * @since  1.4.0
  */
-if ( file_exists( SIMPLELISTING_PATH . '/cmb2/init.php' ) ) {
-	require_once SIMPLELISTING_PATH . '/cmb2/init.php';
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'cmb2/init.php' ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'cmb2/init.php';
 }
-elseif ( file_exists( SIMPLELISTING_PATH . '/CMB2/init.php' ) ) {
-	require_once SIMPLELISTING_PATH . '/CMB2/init.php';
+elseif ( file_exists( plugin_dir_path( __FILE__ ) . 'CMB2/init.php' ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'CMB2/init.php';
 }
 
 add_action( 'wp_enqueue_scripts', 'simplelisting_style' );
@@ -53,7 +61,9 @@ add_action( 'wp_enqueue_scripts', 'simplelisting_style' );
  * @since 1.0.0
  */
 function simplelisting_style() {
-	wp_enqueue_style( 'simplelisting-style', plugins_url( 'includes/simple-listing.css', __FILE__ ), array(), 1.0 );
+	if ( 'listing' === get_post_type() || is_active_widget( false, false, 'featured-listing', true ) ) {
+		wp_enqueue_style( 'simplelisting-style', plugins_url( 'includes/simple-listing.css', __FILE__ ), array(), 1.0 );
+	}
 }
 
 // Register the Featured Listing Widget. Requires Genesis Framework.

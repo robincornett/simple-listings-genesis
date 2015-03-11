@@ -17,7 +17,7 @@ class Simple_Listing_Post_Type_Registrations {
 
 	public function init() {
 		add_action( 'init', array( $this, 'register' ) );
-		add_filter( 'cmb2_meta_boxes', array( $this, 'set_metaboxes' ) );
+		add_action( 'cmb2_init', array( $this, 'set_metaboxes' ) );
 		if ( basename( get_template_directory() ) == 'genesis' ) {
 			add_filter( 'archive_template', array( $this, 'load_archive_template' ) );
 			add_filter( 'single_template', array( $this, 'load_single_template' ) );
@@ -130,41 +130,40 @@ class Simple_Listing_Post_Type_Registrations {
 	 * @return array            Amended meta boxes.
 	 *
 	*/
-	public function set_metaboxes( array $meta_boxes ) {
+	public function set_metaboxes() {
 
 		// Start with an underscore to hide fields from custom fields list
 		$prefix = '_cmb_';
 
-		$meta_boxes['listings'] = array(
+		$simple_listing_metaboxes = new_cmb2_box( array(
 			'id'           => 'listing_metabox',
 			'title'        => __( 'Listing Details', 'simple-listings-genesis' ),
 			'object_types' => array( 'listing' ), // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
-			'show_names'   => true, // Show field names on the left
-			'fields'       => array(
-				array(
-					'name' => __( 'MLS Link: ', 'simple-listings-genesis' ),
-					'desc' => __( 'Enter the full URL of your listing. This can be on a separate MLS site or on your own site.', 'simple-listings-genesis' ),
-					'id'   => $prefix . 'mls-link',
-					'type' => 'text_url',
-				),
-				array(
-					'name' => __( 'Location', 'simple-listings-genesis' ),
-					'desc' => __( 'City, State location information. eg, Chattanooga, Tennessee', 'simple-listings-genesis' ),
-					'id'   => $prefix . 'listing-location',
-					'type' => 'text',
-				),
-				array(
-					'name' => __( 'Transaction Value', 'simple-listings-genesis' ),
-					'desc' => __( 'The sale price or property value.', 'simple-listings-genesis' ),
-					'id'   => $prefix . 'listing-price',
-					'type' => 'text',
-				),
-			),
-		);
+			'show_names'   => true,
+		) );
 
-		return $meta_boxes;
+		$simple_listing_metaboxes->add_field( array(
+			'name' => __( 'MLS Link: ', 'simple-listings-genesis' ),
+			'desc' => __( 'Enter the full URL of your listing. This can be on a separate MLS site or on your own site.', 'simple-listings-genesis' ),
+			'id'   => $prefix . 'mls-link',
+			'type' => 'text_url',
+		) );
+
+		$simple_listing_metaboxes->add_field( array(
+			'name' => __( 'Location', 'simple-listings-genesis' ),
+			'desc' => __( 'City, State location information. eg, Chattanooga, Tennessee', 'simple-listings-genesis' ),
+			'id'   => $prefix . 'listing-location',
+			'type' => 'text',
+		) );
+
+		$simple_listing_metaboxes->add_field( array(
+			'name' => __( 'Transaction Value', 'simple-listings-genesis' ),
+			'desc' => __( 'The sale price or property value.', 'simple-listings-genesis' ),
+			'id'   => $prefix . 'listing-price',
+			'type' => 'text',
+		) );
 
 	}
 

@@ -12,7 +12,7 @@
  * Plugin Name:       Simple Listings for Genesis
  * Plugin URI:        http://github.com/robincornett/simple-listings-genesis/
  * Description:       This sets up a simple real estate listings custom post type/taxonomy. It pretty much requires the Genesis Framework although it will work without it--just reduced functionality.
- * Version:           1.4.1
+ * Version:           1.5.0
  * Author:            Robin Cornett
  * Author URI:        http://robincornett.com
  * Text Domain:       simple-listings-genesis
@@ -23,15 +23,16 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-    die;
+	die;
 }
 
 // Include required files
 function simple_listings_require() {
 	$files = array(
-		'class-listing-registration',
-		'class-listing-type',
+		'class-simplelisting',
+		'class-simplelisting-posttype',
 		'featured-listing-widget',
+		'class-tgm-plugin-activation',
 	);
 
 	foreach ( $files as $file ) {
@@ -40,60 +41,7 @@ function simple_listings_require() {
 }
 simple_listings_require();
 
-// add listing image size
-add_image_size( 'listing-photo', 340, 227, true );
+$simplelisting_post_type = new SimpleListing_Post_Type_Registrations;
+$simplelistingsgenesis   = new Simple_Listings_Genesis( $simplelisting_post_type );
 
-/**
- * set up metaboxes
- * @since  1.4.0
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'cmb2/init.php' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . 'cmb2/init.php';
-}
-elseif ( file_exists( plugin_dir_path( __FILE__ ) . 'CMB2/init.php' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . 'CMB2/init.php';
-}
-
-add_action( 'wp_enqueue_scripts', 'simplelisting_style' );
-/**
- * Load the stylesheet for Simple Genesis Listings
- * Comment out this function if you do not want to use my styles.
- * @since 1.0.0
- */
-function simplelisting_style() {
-	if ( 'listing' === get_post_type() || is_active_widget( false, false, 'featured-listing', true ) ) {
-		wp_enqueue_style( 'simplelisting-style', plugins_url( 'includes/simple-listing.css', __FILE__ ), array(), 1.0 );
-	}
-}
-
-// Register the Featured Listing Widget. Requires Genesis Framework.
-add_action( 'genesis_setup', 'simplelisting_register_genesis_widget' );
-function simplelisting_register_genesis_widget() {
-	add_action( 'widgets_init', 'simplelisting_register_widget' );
-}
-
-function simplelisting_register_widget() {
-	register_widget( 'Genesis_Featured_Listing' );
-}
-
-add_action( 'plugins_loaded', 'simplelisting_load_textdomain' );
-/**
- * Set up text domain for translations
- *
- * @since 1.2.0
- */
-function simplelisting_load_textdomain() {
-	load_plugin_textdomain( 'simple-listings-genesis', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-
-// Instantiate registration class, so we can add it as a dependency to main plugin class.
-$listing_post_type_registrations = new Simple_Listing_Post_Type_Registrations;
-
-// Instantiate main plugin file, so activation callback does not need to be static.
-$listing_post_type = new Simple_Listing_Post_Type( $listing_post_type_registrations );
-
-// Register callback that is fired when the plugin is activated.
-register_activation_hook( __FILE__, array( $listing_post_type, 'activate' ) );
-
-// Initialise registrations for post-activation requests.
-$listing_post_type_registrations->init();
+$simplelistingsgenesis->run();

@@ -26,21 +26,20 @@ class Genesis_Featured_Listing extends WP_Widget {
 	function __construct() {
 
 		$this->defaults = array(
-			'title'           => '',
-			'taxonomy'        => '',
-			'posts_num'       => 1,
-			'posts_offset'    => 0,
-			'orderby'         => 'rand',
-			'order'           => 'DESC',
-			'show_image'      => 0,
-			'image_size'      => 'listing-photo',
-			'post_type'       => 'listing',
-			'listing_date'    => 0,
-			'show_title'      => 0,
-			'show_status'     => 0,
-			'show_content'    => '',
-			'archive_link'    => 0,
-			'archive_text'    => '',
+			'title'        => '',
+			'taxonomy'     => '',
+			'posts_num'    => 1,
+			'posts_offset' => 0,
+			'orderby'      => 'rand',
+			'order'        => 'DESC',
+			'show_image'   => 0,
+			'image_size'   => 'listing-photo',
+			'post_type'    => 'listing',
+			'show_title'   => 0,
+			'show_status'  => 0,
+			'show_content' => '',
+			'archive_link' => 0,
+			'archive_text' => '',
 		);
 
 		$widget_ops = array(
@@ -202,7 +201,6 @@ class Genesis_Featured_Listing extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 
 		$new_instance['title']     = strip_tags( $new_instance['title'] );
-		$new_instance['listing_date'] = wp_kses_post( $new_instance['listing_date'] );
 		return $new_instance;
 
 	}
@@ -216,15 +214,8 @@ class Genesis_Featured_Listing extends WP_Widget {
 	 */
 	function form( $instance ) {
 
-		//* Merge with defaults
+		// Merge with defaults
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
-
-		$args = array(
-			'public' => true
-		);
-		$output = 'names';
-		$operator = 'and';
-		$post_type_list = get_post_types( $args, $output, $operator );
 
 		?>
 		<p>
@@ -232,91 +223,88 @@ class Genesis_Featured_Listing extends WP_Widget {
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 		</p>
 
-		<div class="genesis-widget-column" style="width:100%;">
+		<div class="genesis-widget-column-box genesis-widget-column-box-top">
 
-			<div class="genesis-widget-column-box genesis-widget-column-box-top">
+			<p>
+				<label for="<?php echo $this->get_field_id( 'status' ); ?>"><?php _e( 'Listing Status', 'simple-listings-genesis' ); ?>:</label>
+				<?php
+				$categories_args = array(
+					'name'             => $this->get_field_name( 'status' ),
+					'selected'         => $instance['taxonomy'],
+					'orderby'          => 'Name',
+					'hierarchical'     => 1,
+					'show_option_all'  => 'Any Status',
+					'show_option_none' => __( 'No Status', 'simple-listings-genesis' ),
+					'hide_empty'       => '0',
+				);
+				wp_dropdown_categories( 'show_option_all=Any Status&taxonomy=status' ); ?>
+			</p>
 
-				<p>
-					<label for="<?php echo $this->get_field_id( 'status' ); ?>"><?php _e( 'Listing Status', 'simple-listings-genesis' ); ?>:</label>
-					<?php
-					$categories_args = array(
-						'name'             => $this->get_field_name( 'status' ),
-						'selected'         => $instance['taxonomy'],
-						'orderby'          => 'Name',
-						'hierarchical'     => 1,
-						'show_option_all'  => 'Any Status',
-						'show_option_none' => __( 'No Status', 'simple-listings-genesis' ),
-						'hide_empty'       => '0',
-					);
-					wp_dropdown_categories( 'show_option_all=Any Status&taxonomy=status' ); ?>
-				</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'posts_num' ); ?>"><?php _e( 'Number of Listings to Show', 'simple-listings-genesis' ); ?>:</label>
+				<input type="text" id="<?php echo $this->get_field_id( 'posts_num' ); ?>" name="<?php echo $this->get_field_name( 'posts_num' ); ?>" value="<?php echo esc_attr( $instance['posts_num'] ); ?>" size="2" />
+			</p>
 
-				<p>
-					<label for="<?php echo $this->get_field_id( 'posts_num' ); ?>"><?php _e( 'Number of Listings to Show', 'simple-listings-genesis' ); ?>:</label>
-					<input type="text" id="<?php echo $this->get_field_id( 'posts_num' ); ?>" name="<?php echo $this->get_field_name( 'posts_num' ); ?>" value="<?php echo esc_attr( $instance['posts_num'] ); ?>" size="2" />
-				</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'posts_offset' ); ?>"><?php _e( 'Number of Listings to Offset/Hide', 'simple-listings-genesis' ); ?>:</label>
+				<input type="text" id="<?php echo $this->get_field_id( 'posts_offset' ); ?>" name="<?php echo $this->get_field_name( 'posts_offset' ); ?>" value="<?php echo esc_attr( $instance['posts_offset'] ); ?>" size="2" />
+			</p>
 
-				<p>
-					<label for="<?php echo $this->get_field_id( 'posts_offset' ); ?>"><?php _e( 'Number of Listings to Offset/Hide', 'simple-listings-genesis' ); ?>:</label>
-					<input type="text" id="<?php echo $this->get_field_id( 'posts_offset' ); ?>" name="<?php echo $this->get_field_name( 'posts_offset' ); ?>" value="<?php echo esc_attr( $instance['posts_offset'] ); ?>" size="2" />
-				</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By', 'simple-listings-genesis' ); ?>:</label>
+				<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
+					<option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'simple-listings-genesis' ); ?></option>
+					<option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'simple-listings-genesis' ); ?></option>
+					<option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'simple-listings-genesis' ); ?></option>
+					<option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'simple-listings-genesis' ); ?></option>
+				</select>
+			</p>
 
-				<p>
-					<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By', 'simple-listings-genesis' ); ?>:</label>
-					<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
-						<option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'simple-listings-genesis' ); ?></option>
-						<option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'simple-listings-genesis' ); ?></option>
-						<option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'simple-listings-genesis' ); ?></option>
-						<option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'simple-listings-genesis' ); ?></option>
-					</select>
-				</p>
-
-				<p>
-					<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Sort Order', 'simple-listings-genesis' ); ?>:</label>
-					<select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
-						<option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'simple-listings-genesis' ); ?></option>
-						<option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'simple-listings-genesis' ); ?></option>
-					</select>
-				</p>
-
-			</div>
-
-			<div class="genesis-widget-column-box">
-
-				<p>
-					<input id="<?php echo $this->get_field_id( 'show_image' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_image' ); ?>" value="1" <?php checked( $instance['show_image'] ); ?>/>
-					<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Show Featured Image', 'simple-listings-genesis' ); ?></label>
-				</p>
-
-				<p>
-					<input id="<?php echo $this->get_field_id( 'show_status' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_status' ); ?>" value="1" <?php checked( $instance['show_status'] ); ?>/>
-					<label for="<?php echo $this->get_field_id( 'show_status' ); ?>"><?php _e( 'Show Status', 'simple-listings-genesis' ); ?></label>
-				</p>
-
-				<p>
-					<input id="<?php echo $this->get_field_id( 'show_title' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_title' ); ?>" value="1" <?php checked( $instance['show_title'] ); ?>/>
-					<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e( 'Show Listing Title', 'simple-listings-genesis' ); ?></label>
-				</p>
-
-				<p>
-					<label for="<?php echo $this->get_field_id( 'show_content' ); ?>"><?php _e( 'Show the content?', 'simple-listings-genesis' ); ?>:</label>
-					<select id="<?php echo $this->get_field_id( 'show_content' ); ?>" name="<?php echo $this->get_field_name( 'show_content' ); ?>">
-						<option value="" <?php selected( '', $instance['show_content'] ); ?>><?php _e( 'Do Not Show Content', 'simple-listings-genesis' ); ?></option>
-						<option value="content" <?php selected( 'content', $instance['show_content'] ); ?>><?php _e( 'Show Content', 'simple-listings-genesis' ); ?></option>
-					</select>
-				</p>
-				<p>
-					<input id="<?php echo $this->get_field_id( 'archive_link' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'archive_link' ); ?>" value="1" <?php checked( $instance['archive_link'] ); ?>/>
-					<label for="<?php echo $this->get_field_id( 'archive_link' ); ?>"><?php _e( 'Show Archive Link (this will show all listings)', 'simple-listings-genesis' ); ?></label>
-				</p>
-				<p>
-					<label for="<?php echo $this->get_field_id( 'archive_text' ); ?>"><?php _e( 'Link Text', 'simple-listings-genesis' ); ?>:</label>
-					<input type="text" id="<?php echo $this->get_field_id( 'archive_text' ); ?>" name="<?php echo $this->get_field_name( 'archive_text' ); ?>" value="<?php echo esc_attr( $instance['archive_text'] ); ?>" class="widefat" />
-				</p>
-
-			</div>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Sort Order', 'simple-listings-genesis' ); ?>:</label>
+				<select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+					<option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'simple-listings-genesis' ); ?></option>
+					<option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'simple-listings-genesis' ); ?></option>
+				</select>
+			</p>
 
 		</div>
+
+		<div class="genesis-widget-column-box">
+
+			<p>
+				<input id="<?php echo $this->get_field_id( 'show_image' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_image' ); ?>" value="1" <?php checked( $instance['show_image'] ); ?>/>
+				<label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Show Featured Image', 'simple-listings-genesis' ); ?></label>
+			</p>
+
+			<p>
+				<input id="<?php echo $this->get_field_id( 'show_status' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_status' ); ?>" value="1" <?php checked( $instance['show_status'] ); ?>/>
+				<label for="<?php echo $this->get_field_id( 'show_status' ); ?>"><?php _e( 'Show Status', 'simple-listings-genesis' ); ?></label>
+			</p>
+
+			<p>
+				<input id="<?php echo $this->get_field_id( 'show_title' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_title' ); ?>" value="1" <?php checked( $instance['show_title'] ); ?>/>
+				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e( 'Show Listing Title', 'simple-listings-genesis' ); ?></label>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'show_content' ); ?>"><?php _e( 'Show the content?', 'simple-listings-genesis' ); ?>:</label>
+				<select id="<?php echo $this->get_field_id( 'show_content' ); ?>" name="<?php echo $this->get_field_name( 'show_content' ); ?>">
+					<option value="" <?php selected( '', $instance['show_content'] ); ?>><?php _e( 'Do Not Show Content', 'simple-listings-genesis' ); ?></option>
+					<option value="content" <?php selected( 'content', $instance['show_content'] ); ?>><?php _e( 'Show Content', 'simple-listings-genesis' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<input id="<?php echo $this->get_field_id( 'archive_link' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'archive_link' ); ?>" value="1" <?php checked( $instance['archive_link'] ); ?>/>
+				<label for="<?php echo $this->get_field_id( 'archive_link' ); ?>"><?php _e( 'Show Archive Link (this will show all listings)', 'simple-listings-genesis' ); ?></label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'archive_text' ); ?>"><?php _e( 'Link Text', 'simple-listings-genesis' ); ?>:</label>
+				<input type="text" id="<?php echo $this->get_field_id( 'archive_text' ); ?>" name="<?php echo $this->get_field_name( 'archive_text' ); ?>" value="<?php echo esc_attr( $instance['archive_text'] ); ?>" class="widefat" />
+			</p>
+
+		</div>
+
 		<?php
 
 	}

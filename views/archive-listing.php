@@ -43,17 +43,15 @@ function simplelisting_archive_loops() {
  */
 function simplelisting_loop_html5() {
 
-	global $post;
-
 	echo '<div class="listings">';
 	if ( have_posts() ) :
 
 		while ( have_posts() ) : the_post();
 
-		$status = get_the_term_list( $post->ID, 'status', '', ', ', '' ); ?>
+		$status = get_the_term_list( get_the_ID(), 'status', '', ', ', '' ); ?>
 
 			<article <?php post_class(); ?>><div class="listing-wrap"> <?php
-				$image    = get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+				$image    = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
 				$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
 
 				if ( $image ) {
@@ -61,10 +59,9 @@ function simplelisting_loop_html5() {
 				}
 				else {
 					printf(
-						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" title="%s" />',
+						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" />',
 						get_permalink(),
 						$fallback,
-						the_title_attribute( 'echo=0' ),
 						the_title_attribute( 'echo=0' )
 					);
 				}
@@ -94,18 +91,16 @@ function simplelisting_loop_html5() {
  */
 function simplelisting_loop_xhtml() {
 
-	global $post;
-
 	echo '<div class="listings">';
 	if ( have_posts() ) :
 
 		while ( have_posts() ) : the_post();
 
-		$status = get_the_term_list( $post->ID, 'status', '', ', ', '' );
+		$status = get_the_term_list( get_the_ID(), 'status', '', ', ', '' );
 
 			printf( '<div class="%s">', join( ' ', get_post_class() ) );
 			echo '<div class="listing-wrap">';
-				$image    = get_the_post_thumbnail( $post->ID, 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+				$image    = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title() ) );
 				$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
 
 				if ( $image ) {
@@ -113,10 +108,9 @@ function simplelisting_loop_xhtml() {
 				}
 				else {
 					printf(
-						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" title="%s" />',
+						'<a href="%s"><img src="%s" class="aligncenter" alt="%s" />',
 						get_permalink(),
 						$fallback,
-						the_title_attribute( 'echo=0' ),
 						the_title_attribute( 'echo=0' )
 					);
 				}

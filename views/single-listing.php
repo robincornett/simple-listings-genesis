@@ -22,21 +22,21 @@ function simplelisting_single_content() {
 	$price       = get_post_meta( get_the_ID(), '_cmb_listing-price', true );
 	$description = get_the_content();
 	$mls         = get_post_meta( get_the_ID(), '_cmb_mls-link', true );
-
-	echo get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
+	$image       = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
 	if ( $description ) {
-		echo wpautop( '<strong>' . __( 'Description: ', 'simple-listings-genesis' ) . '</strong>' . $description );
+		$description = sprintf( '<strong>%s</strong>%s', __( 'Description: ', 'simple-listings-genesis' ), $description );
+		echo wpautop( wp_kses_post( $image . $description ) );
 	}
 	if ( $location ) {
-		echo '<strong>' . __( 'Location: ', 'simple-listings-genesis' ) . '</strong> ' . esc_attr( $location );
+		printf( '<strong>%s</strong> %s', esc_attr__( 'Location: ', 'simple-listings-genesis' ), esc_attr( $location ) );
 	}
 	if ( $price ) {
 		echo '<br />';
-		echo '<strong>' . __( 'Transaction Amount: ', 'simple-listings-genesis' ) . '</strong>' . esc_attr( $price );
+		printf( '<strong>%s</strong> %s', esc_attr__( 'Transaction Amount: ', 'simple-listings-genesis' ), esc_attr( $price ) );
 	}
 	if ( $mls ) {
 		echo '<br />';
-		echo '<a href="' . esc_url( $mls ) . '" target="_blank">' . __( 'Listing Details', 'simple-listings-genesis' ) . '</a>';
+		printf( '<a href="%s" target="_blank">%s</a>', esc_url( $mls ), esc_attr__( 'Listing Details', 'simple-listings-genesis' ) );
 	}
 
 }

@@ -66,6 +66,10 @@ __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
 
+### 1.5.0
+* Removed CMB2 from plugin files, since it's now on the repository. Use TGMPA to require CMB2
+* Refactored everything, cleaned up template files
+
 ### 1.4.1
 * bugfix: invalid header warnings on activation (CMB2)
 

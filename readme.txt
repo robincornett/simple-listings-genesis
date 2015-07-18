@@ -4,8 +4,8 @@ Contributors: littler.chicken
 Donate link: https://robincornett.com/donate/
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.4.1
+Tested up to: 4.3
+Stable tag: 1.5.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -49,16 +49,14 @@ Simple Listings for Genesis works much like creating any other post or page in W
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-Updated to include styling and hooks for XHTML compatibility. Minor CSS tweaks.
-
-= 1.2.1 =
-Templates cleaned up and translation strings corrected.
-
-= 1.4.1 =
-new admin columns! and ready for WordPress 4.1 (1.4.1: bugfix for activation error)
+= 1.5.0 =
+Updated for CMB2
 
 == Changelog ==
+
+= 1.5.0 =
+* Removed CMB2 from plugin files, since it's now on the repository. Use TGMPA to require CMB2
+* Refactored everything, cleaned up template files
 
 = 1.4.1 =
 * bugfix: invalid header warnings on activation (CMB2)

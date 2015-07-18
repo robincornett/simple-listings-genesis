@@ -22,7 +22,7 @@ function simplelisting_single_content() {
 	$price       = get_post_meta( get_the_ID(), '_cmb_listing-price', true );
 	$description = get_the_content();
 	$mls         = get_post_meta( get_the_ID(), '_cmb_mls-link', true );
-	$image       = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ), 'title' => the_title_attribute( 'echo=0' ) ) );
+	$image       = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'alignright', 'alt' => the_title_attribute( 'echo=0' ) ) );
 	if ( $description ) {
 		$description = sprintf( '<strong>%s</strong>%s', __( 'Description: ', 'simple-listings-genesis' ), $description );
 		echo wpautop( wp_kses_post( $image . $description ) );

@@ -48,7 +48,7 @@ function simplelistinggenesis_archive_loop() {
 function simplelistingsgenesis_archive_photo() {
 	echo '<div class="listing-wrap">';
 	$status   = get_the_term_list( get_the_ID(), 'status', '', ', ', '' );
-	$image    = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title(), 'title' => get_the_title() ) );
+	$image    = get_the_post_thumbnail( get_the_ID(), 'listing-photo', array( 'class' => 'aligncenter', 'alt' => get_the_title() ) );
 	$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
 
 	if ( $image ) {

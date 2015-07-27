@@ -31,7 +31,6 @@ function simple_listings_require() {
 	$files = array(
 		'class-simplelisting',
 		'class-simplelisting-posttype',
-		'featured-listing-widget',
 		'class-tgm-plugin-activation',
 	);
 

@@ -45,6 +45,7 @@ class Simple_Listings_Genesis {
 	}
 
 	function simplelisting_register_widget() {
+		require_once plugin_dir_path( __FILE__ ) . 'featured-listing-widget.php';
 		register_widget( 'Genesis_Featured_Listing' );
 	}
 

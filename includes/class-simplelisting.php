@@ -33,14 +33,14 @@ class Simple_Listings_Genesis {
 	 * Comment out this function if you do not want to use my styles.
 	 * @since 1.0.0
 	 */
-	function simplelisting_style() {
+	public function simplelisting_style() {
 		$css_file = apply_filters( 'simplelistingsgenesis_css_file', plugin_dir_url( __FILE__ ) . 'simple-listing.css' );
 		if ( 'listing' === get_post_type() || is_active_widget( false, false, 'featured-listing', true ) ) {
 			wp_enqueue_style( 'simplelisting-style', $css_file, array(), '1.5.0' );
 		}
 	}
 
-	function register_widget() {
+	public function register_widget() {
 		add_action( 'widgets_init', array( $this, 'simplelisting_register_widget' ) );
 	}
 
@@ -54,11 +54,11 @@ class Simple_Listings_Genesis {
 	 *
 	 * @since 1.2.0
 	 */
-	function load_textdomain() {
-		load_plugin_textdomain( 'simple-listings-genesis', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	public function load_textdomain() {
+		load_plugin_textdomain( 'simple-listings-genesis', false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
 	}
 
-	function require_plugins() {
+	public function require_plugins() {
 		/*
 		 * Array of plugin arrays. Required keys are name and slug.
 		 * If the source is NOT from the .org repo, then source is also required.
@@ -111,5 +111,4 @@ class Simple_Listings_Genesis {
 
 		tgmpa( $plugins, $config );
 	}
-
 }

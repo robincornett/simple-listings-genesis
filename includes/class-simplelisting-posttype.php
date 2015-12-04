@@ -218,25 +218,15 @@ class SimpleListing_Post_Type_Registrations {
 	public function add_columns( $columns ) {
 
 		unset( $columns['date'] );
-		$columns = array(
-			'cb'              => '<input type="checkbox" />',
-			'title'           => __( 'Listing', 'simple-listings-genesis' ),
-			'listing_photo'   => __( 'Photo', 'simple-listings-genesis' ),
-			'mls_link'        => __( 'MLS Link', 'simple-listings-genesis' ),
-			'location'        => __( 'Location', 'simple-listings-genesis' ),
-			'price'           => __( 'Price', 'simple-listings-genesis' ),
-			'taxonomy-status' => __( 'Listing Status', 'simple-listings-genesis' ),
-		);
-		if ( class_exists( 'Display_Featured_Image_Genesis' ) ) {
-			$columns = array(
-				'cb'              => '<input type="checkbox" />',
-				'title'           => __( 'Listing', 'simple-listings-genesis' ),
-				'mls_link'        => __( 'MLS Link', 'simple-listings-genesis' ),
-				'location'        => __( 'Location', 'simple-listings-genesis' ),
-				'price'           => __( 'Price', 'simple-listings-genesis' ),
-				'taxonomy-status' => __( 'Listing Status', 'simple-listings-genesis' ),
-			);
+		if ( ! class_exists( 'Display_Featured_Image_Genesis' ) ) {
+			$columns['listing_photo'] = __( 'Photo', 'simple-listings-genesis' );
 		}
+		$columns['cb']              = '<input type="checkbox" />';
+		$columns['title']           = __( 'Listing', 'simple-listings-genesis' );
+		$columns['mls_link']        = __( 'MLS Link', 'simple-listings-genesis' );
+		$columns['location']        = __( 'Location', 'simple-listings-genesis' );
+		$columns['price']           = __( 'Price', 'simple-listings-genesis' );
+		$columns['taxonomy-status'] = __( 'Listing Status', 'simple-listings-genesis' );
 
 		return $columns;
 

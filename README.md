@@ -13,7 +13,7 @@ If your site is running a Genesis Framework child theme, this plugin includes a 
 Demo: http://robin.works/listings/
 
 ## Requirements
-* WordPress 3.8, tested up to 4.1
+* WordPress 3.8, tested up to 4.4
 * Genesis Framework (templates and widget will not work with other themes, although post type and metaboxes will work with any theme)
 
 ## Installation
@@ -65,6 +65,9 @@ __Screenshot of all listings in Admin.__
 __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
+
+### 1.6.0 ###
+* Revised single listing output--now uses the_content filter.
 
 ### 1.5.0
 * Removed CMB2 from plugin files, since it's now on the repository. Use TGMPA to require CMB2

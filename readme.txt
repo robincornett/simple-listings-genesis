@@ -4,8 +4,8 @@ Contributors: littler.chicken
 Donate link: https://robincornett.com/donate/
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
-Tested up to: 4.3
-Stable tag: 1.5.0
+Tested up to: 4.4
+Stable tag: 1.6.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -49,10 +49,13 @@ Simple Listings for Genesis works much like creating any other post or page in W
 
 == Upgrade Notice ==
 
-= 1.5.0 =
-Updated for CMB2
+= 1.6.0 =
+Ready for WordPress 4.4, single listing output revised
 
 == Changelog ==
+
+= 1.6.0 =
+* Revised single listing output--now uses the_content filter.
 
 = 1.5.0 =
 * Removed CMB2 from plugin files, since it's now on the repository. Use TGMPA to require CMB2

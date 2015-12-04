@@ -36,7 +36,7 @@ class Simple_Listings_Genesis {
 	public function simplelisting_style() {
 		$css_file = apply_filters( 'simplelistingsgenesis_css_file', plugin_dir_url( __FILE__ ) . 'simple-listing.css' );
 		if ( 'listing' === get_post_type() || is_active_widget( false, false, 'featured-listing', true ) ) {
-			wp_enqueue_style( 'simplelisting-style', $css_file, array(), '1.5.0' );
+			wp_enqueue_style( 'simplelisting-style', $css_file, array(), '1.6.0' );
 		}
 	}
 
@@ -44,7 +44,7 @@ class Simple_Listings_Genesis {
 		add_action( 'widgets_init', array( $this, 'simplelisting_register_widget' ) );
 	}
 
-	function simplelisting_register_widget() {
+	public function simplelisting_register_widget() {
 		require_once plugin_dir_path( __FILE__ ) . 'featured-listing-widget.php';
 		register_widget( 'Genesis_Featured_Listing' );
 	}

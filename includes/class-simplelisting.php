@@ -97,12 +97,12 @@ class Simple_Listings_Genesis {
 			'strings'      => array(
 				'notice_can_install_required'  => _n_noop(
 					'Simple Listings for Genesis requires the following plugin: %1$s.',
-					'Simple Listings for Genesis requires the following plugin: %1$s.',
+					'Simple Listings for Genesis requires the following plugins: %1$s.',
 					'theme-slug'
 				), // %1$s = plugin name(s).
 				'notice_can_activate_required' => _n_noop(
 					'Simple Listings for Genesis requires the following plugin, which is currently inactive: %1$s.',
-					'Simple Listings for Genesis requires the following plugin, which are currently inactive: %1$s.',
+					'Simple Listings for Genesis requires the following plugins, which are currently inactive: %1$s.',
 					'theme-slug'
 				), // %1$s = plugin name(s).
 			),

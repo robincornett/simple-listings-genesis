@@ -12,12 +12,23 @@
 
 class Simple_Listings_Genesis {
 
+	/**
+	 * @var $post_type SimpleListing_Post_Type_Registrations
+	 */
 	protected $post_type;
 
+	/**
+	 * Simple_Listings_Genesis constructor.
+	 *
+	 * @param $post_type
+	 */
 	public function __construct( $post_type ) {
 		$this->post_type = $post_type;
 	}
 
+	/**
+	 * The main plugin function. Calls all actions.
+	 */
 	public function run() {
 		$this->post_type->init();
 
@@ -40,10 +51,16 @@ class Simple_Listings_Genesis {
 		}
 	}
 
+	/**
+	 * Call up the featured listing widget.
+	 */
 	public function register_widget() {
 		add_action( 'widgets_init', array( $this, 'simplelisting_register_widget' ) );
 	}
 
+	/**
+	 * Register the featured listing widget.
+	 */
 	public function simplelisting_register_widget() {
 		require_once plugin_dir_path( __FILE__ ) . 'featured-listing-widget.php';
 		register_widget( 'Genesis_Featured_Listing' );
@@ -55,9 +72,12 @@ class Simple_Listings_Genesis {
 	 * @since 1.2.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'simple-listings-genesis', false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
+		load_plugin_textdomain( 'simple-listings-genesis' );
 	}
 
+	/**
+	 * Require necessary plugins. Uses TGMPA.
+	 */
 	public function require_plugins() {
 		/*
 		 * Array of plugin arrays. Required keys are name and slug.
@@ -95,18 +115,22 @@ class Simple_Listings_Genesis {
 			'message'      => '',                      // Message to output right before the plugins table.
 
 			'strings'      => array(
+				'page_title'                   => __( 'Install Required Plugins', 'simple-listings-genesis' ),
+				'menu_title'                   => __( 'Install Plugins', 'simple-listings-genesis' ),
+				'installing'                   => __( 'Installing Plugin: %s', 'simple-listings-genesis' ),
+				// %s = plugin name.
+				'oops'                         => __( 'Something went wrong with the plugin API.', 'simple-listings-genesis' ),
 				'notice_can_install_required'  => _n_noop(
 					'Simple Listings for Genesis requires the following plugin: %1$s.',
 					'Simple Listings for Genesis requires the following plugins: %1$s.',
-					'theme-slug'
-				), // %1$s = plugin name(s).
+					'simple-listings-genesis'
+				),// %1$s = plugin name(s).
 				'notice_can_activate_required' => _n_noop(
-					'Simple Listings for Genesis requires the following plugin, which is currently inactive: %1$s.',
-					'Simple Listings for Genesis requires the following plugins, which are currently inactive: %1$s.',
-					'theme-slug'
-				), // %1$s = plugin name(s).
+					'The following required plugin is currently inactive: %1$s.',
+					'The following required plugins are currently inactive: %1$s.',
+					'simple-listings-genesis'
+				),// %1$s = plugin name(s).
 			),
-
 		);
 
 		tgmpa( $plugins, $config );

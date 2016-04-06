@@ -66,7 +66,10 @@ __Admin: create/update a new listing. Note metaboxes and featured image.__
 
 ## Changelog
 
-### 1.6.0 ###
+### 1.6.1
+* Fixed widget to correctly accept term selection.
+
+### 1.6.0
 * Revised single listing output--now uses the_content filter.
 
 ### 1.5.0

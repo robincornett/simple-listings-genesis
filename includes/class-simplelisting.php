@@ -47,7 +47,7 @@ class Simple_Listings_Genesis {
 	public function simplelisting_style() {
 		$css_file = apply_filters( 'simplelistingsgenesis_css_file', plugin_dir_url( __FILE__ ) . 'simple-listing.css' );
 		if ( 'listing' === get_post_type() || is_active_widget( false, false, 'featured-listing', true ) ) {
-			wp_enqueue_style( 'simplelisting-style', $css_file, array(), '1.6.0' );
+			wp_enqueue_style( 'simplelisting-style', $css_file, array(), '1.6.1' );
 		}
 	}
 

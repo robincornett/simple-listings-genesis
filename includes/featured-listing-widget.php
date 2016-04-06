@@ -43,8 +43,9 @@ class Genesis_Featured_Listing extends WP_Widget {
 		);
 
 		$widget_ops = array(
-			'classname'   => 'featured-content featuredlisting',
-			'description' => __( 'Displays featured listings with thumbnails', 'simple-listings-genesis' ),
+			'classname'                   => 'featured-content featuredlisting',
+			'description'                 => __( 'Displays featured listings with thumbnails', 'simple-listings-genesis' ),
+			'customize_selective_refresh' => true,
 		);
 
 		$control_ops = array(

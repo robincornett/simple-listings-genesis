@@ -68,17 +68,13 @@ class Genesis_Featured_Listing extends WP_Widget {
 	 */
 	function widget( $args, $instance ) {
 
-		global $wp_query;
-
-		extract( $args );
-
 		// Merge with defaults
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		if ( ! empty( $instance['title'] ) ) {
-			echo $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title;
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'];
 		}
 
 		$query_args = array(
@@ -95,10 +91,9 @@ class Genesis_Featured_Listing extends WP_Widget {
 			),
 		);
 
-		global $post;
-		$wp_query = new WP_Query( $query_args );
+		$widget_query = new WP_Query( $query_args );
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ) : $widget_query->the_post();
 
 			genesis_markup( array(
 				'html5'   => '<article %s><div class="listing-wrap">',
@@ -137,7 +132,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 			}
 
 			if ( ! empty( $instance['show_status'] ) ) {
-				echo '<span class="listing-status">' . strip_tags( get_the_term_list( $post->ID, 'status', '', ', ', '' ) ) . '</span>';
+				echo '<span class="listing-status">' . strip_tags( get_the_term_list( get_the_ID(), 'status', '', ', ', '' ) ) . '</span>';
 			}
 
 			if ( $instance['show_title'] ) {
@@ -147,16 +142,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 			if ( ! empty( $instance['show_content'] ) ) {
 
 				echo genesis_html5() ? '<div class="entry-content">' : '';
-
-					global $more;
-
-					$orig_more = $more;
-					$more = 0;
-
-					the_content( esc_html( $instance['more_text'] ) );
-
-					$more = $orig_more;
-
+					the_content();
 				echo genesis_html5() ? '</div>' : '';
 
 			}
@@ -179,7 +165,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 		// Restore original query
 		wp_reset_query();
 
-		echo $after_widget;
+		echo $args['after_widget'];
 
 	}
 
@@ -303,9 +289,6 @@ class Genesis_Featured_Listing extends WP_Widget {
 			</p>
 
 		</div>
-
 		<?php
-
 	}
-
 }

@@ -27,7 +27,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 
 		$this->defaults = array(
 			'title'        => '',
-			'taxonomy'     => '',
+			'tax_term'     => '',
 			'posts_num'    => 1,
 			'posts_offset' => 0,
 			'orderby'      => 'rand',
@@ -67,7 +67,7 @@ class Genesis_Featured_Listing extends WP_Widget {
 	 */
 	function widget( $args, $instance ) {
 
-		global $wp_query, $_genesis_displayed_ids;
+		global $wp_query;
 
 		extract( $args );
 
@@ -82,20 +82,22 @@ class Genesis_Featured_Listing extends WP_Widget {
 
 		$query_args = array(
 			'post_type' => 'listing',
-			'taxonomy'  => $instance['taxonomy'],
 			'showposts' => $instance['posts_num'],
 			'offset'    => $instance['posts_offset'],
 			'orderby'   => $instance['orderby'],
 			'order'     => $instance['order'],
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'status',
+					'terms'    => $instance['tax_term'],
+				),
+			),
 		);
 
-		// Exclude displayed IDs from this loop?
 		global $post;
 		$wp_query = new WP_Query( $query_args );
 
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
-
-			$_genesis_displayed_ids[] = get_the_ID();
 
 			genesis_markup( array(
 				'html5'   => '<article %s><div class="listing-wrap">',
@@ -111,20 +113,16 @@ class Genesis_Featured_Listing extends WP_Widget {
 			) );
 
 			if ( $instance['show_image'] ) {
+				if ( ! $image ) {
+					$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
+					$image    = sprintf( '<img src="%s" alt="%s" />', esc_url( $fallback ), esc_attr( the_title_attribute( 'echo=0' ) ) );
+				}
 				if ( $image ) {
 					printf(
 						'<a href="%s" alt="%s">%s</a>',
 						esc_url( get_permalink() ),
 						esc_attr( the_title_attribute( 'echo=0' ) ),
 						wp_kses_post( $image )
-					);
-				} else {
-					$fallback = plugins_url( 'includes/sample-images/simple-listings.png' , dirname( __FILE__ ) );
-					printf(
-						'<a href="%s"><img src="%s" alt="%s" />',
-						esc_url( get_permalink() ),
-						esc_url( $fallback ),
-						esc_attr( the_title_attribute( 'echo=0' ) )
 					);
 				}
 			}
@@ -225,18 +223,19 @@ class Genesis_Featured_Listing extends WP_Widget {
 		<div class="genesis-widget-column-box genesis-widget-column-box-top">
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'status' ) ); ?>"><?php esc_attr_e( 'Listing Status', 'simple-listings-genesis' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'tax_term' ) ); ?>"><?php esc_attr_e( 'Listing Status', 'simple-listings-genesis' ); ?>:</label>
 				<?php
 				$categories_args = array(
-					'name'             => $this->get_field_name( 'status' ),
-					'selected'         => $instance['taxonomy'],
+					'name'             => $this->get_field_name( 'tax_term' ),
+					'selected'         => $instance['tax_term'],
 					'orderby'          => 'Name',
 					'hierarchical'     => 1,
 					'show_option_all'  => 'Any Status',
 					'show_option_none' => __( 'No Status', 'simple-listings-genesis' ),
-					'hide_empty'       => '0',
+					'hide_empty'       => 1,
+					'taxonomy'         => 'status',
 				);
-				wp_dropdown_categories( 'show_option_all=Any Status&taxonomy=status' ); ?>
+				wp_dropdown_categories( $categories_args ); ?>
 			</p>
 
 			<p>

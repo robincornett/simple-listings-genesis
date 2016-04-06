@@ -83,13 +83,16 @@ class Genesis_Featured_Listing extends WP_Widget {
 			'offset'    => $instance['posts_offset'],
 			'orderby'   => $instance['orderby'],
 			'order'     => $instance['order'],
-			'tax_query' => array(
+		);
+
+		if ( '0' !== $instance['tax_term'] ) {
+			$query_args['tax_query'] = array(
 				array(
 					'taxonomy' => 'status',
 					'terms'    => $instance['tax_term'],
 				),
-			),
-		);
+			);
+		}
 
 		$widget_query = new WP_Query( $query_args );
 
@@ -217,8 +220,8 @@ class Genesis_Featured_Listing extends WP_Widget {
 					'selected'         => $instance['tax_term'],
 					'orderby'          => 'Name',
 					'hierarchical'     => 1,
-					'show_option_all'  => 'Any Status',
-					'show_option_none' => __( 'No Status', 'simple-listings-genesis' ),
+					'show_option_all'  => __( 'Any Status', 'simple-listings-genesis' ),
+					'show_option_none' => 0,
 					'hide_empty'       => 1,
 					'taxonomy'         => 'status',
 				);

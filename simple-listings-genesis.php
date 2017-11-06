@@ -5,16 +5,16 @@
  * @package   Simple_Listing_Post_Type
  * @author    Robin Cornett <hello@robincornett.com>
  * @license   GPL-2.0+
- * @link      http://robincornett.com
+ * @link      https://robincornett.com
  * @copyright 2014-2016 Robin Cornett Creative, LLC
  *
  * @wordpress-plugin
  * Plugin Name:       Simple Listings for Genesis
  * Plugin URI:        http://github.com/robincornett/simple-listings-genesis/
  * Description:       This sets up a simple real estate listings custom post type/taxonomy. It pretty much requires the Genesis Framework although it will work without it--just reduced functionality.
- * Version:           1.6.1
+ * Version:           1.6.2
  * Author:            Robin Cornett
- * Author URI:        http://robincornett.com
+ * Author URI:        https://robincornett.com
  * Text Domain:       simple-listings-genesis
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -40,7 +40,7 @@ function simple_listings_require() {
 }
 simple_listings_require();
 
-$simplelisting_post_type = new SimpleListing_Post_Type_Registrations;
+$simplelisting_post_type = new SimpleListing_Post_Type_Registrations();
 $simplelistingsgenesis   = new Simple_Listings_Genesis( $simplelisting_post_type );
 
 $simplelistingsgenesis->run();

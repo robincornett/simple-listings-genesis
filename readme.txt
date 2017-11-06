@@ -4,8 +4,8 @@ Contributors: littler.chicken
 Donate link: https://robincornett.com/donate/
 Tags: Genesis, StudioPress, real estate, realty, realtor, listing
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 1.6.1
+Tested up to: 4.9
+Stable tag: 1.6.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -49,10 +49,12 @@ Simple Listings for Genesis works much like creating any other post or page in W
 
 == Upgrade Notice ==
 
-= 1.6.1 =
-Fixed widget construction; ready for WordPress 4.5
+Updated to show WordPress 4.9 compatibility.
 
 == Changelog ==
+
+= 1.6.2 =
+* Updated stable version, WordPress tested version
 
 = 1.6.1 =
 * Fixed widget to correctly accept term selection.
